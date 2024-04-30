@@ -3,6 +3,8 @@
 #include <time.h>
 
 
+void Grille_vider(struct Grille * g);
+
 
 struct Grille * Grille_allouer(int n, int m){
         
@@ -22,9 +24,23 @@ struct Grille * Grille_allouer(int n, int m){
 		}
 	}	
 
-	return g;
+
+	return g;	
 	
 }
+
+
+void Grille_vider(struct Grille * g) {
+
+	int i, j;
+	
+	for (i=0; i<g->n; i++) {
+		for (j=0; j<2; j++) {
+			g->tab[i][j] = "  ";	
+		}
+	}
+}
+
 
 
 
