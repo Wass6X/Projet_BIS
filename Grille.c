@@ -3,6 +3,6 @@
 #include <time.h>
 #include "Grille.h"
 
-struct Grille *Grille_allouer(int n, int m){
+struct Grille * Grille_allouer(int n, int m){
 
 }
