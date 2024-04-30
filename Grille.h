@@ -4,7 +4,7 @@
 
 
 struct Grille {
- 	int n;
+	int n;
  	int m;
 	char ** mat;
 	int long_fruit;
