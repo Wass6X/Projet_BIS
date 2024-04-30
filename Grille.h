@@ -6,5 +6,4 @@
 struct Grille {
   int n;
   int m;
-  
-}
+};
