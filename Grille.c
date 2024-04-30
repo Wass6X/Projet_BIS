@@ -5,19 +5,25 @@
 
 struct Grille * Grille_allouer(int n, int m){
         
-        int i;
+        int i, j;
         
         struct Grille *g = malloc(sizeof(struct Grille));
         
         g->n = n;
         g->m = m;
 
-        g->tab = malloc(8 * sizeof(char *));
+        g->tab = malloc(n * sizeof(char **));
 	
-	for (i=0; i<m; i++) {
-		tab[i] = malloc(8 * sizeof(char));		
+	for (i=0; i<n; i++) {
+		tab[i] = malloc(m * sizeof(char*));		
+		for (j=0; j<m; j++) {
+			tab[i][j] = malloc(8 * sizeof(char));
+		}
 	}	
-
+	
+	
+	
+	
 }
 
 struct Grille vider 
