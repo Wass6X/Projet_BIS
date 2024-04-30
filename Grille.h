@@ -6,8 +6,8 @@ struct Grille {
 	int n;
  	int m;
 	char ** mat;
-	int x;
-	int y;
+	int cordx;
+	int cordy;
 };
 
 
