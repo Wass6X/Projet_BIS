@@ -21,6 +21,9 @@ struct Grille * Grille_allouer(int n, int m){
 		}
 	}	
 
+	return g;
+	
 }
+
 
 struct Grille vider 
