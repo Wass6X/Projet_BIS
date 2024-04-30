@@ -25,4 +25,9 @@ struct Grille * Grille_allouer(int n, int m){
 	
 }
 
+void Grille_tirage_fruit(struct Grille *g){
+        g->cordx = rand()%g->n;
+        g->cordy = rand()%g->m;
+}
+
 
