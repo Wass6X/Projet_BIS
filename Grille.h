@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
+/*Déclaration de la structure Grille*/
 struct Grille {
 	int n;
  	int m;
@@ -10,7 +10,7 @@ struct Grille {
 	int cordy;
 };
 
-
+/*Déclaration des fonctions pour Grille.c*/
 struct Grille * Grille_allouer(int n, int m);
 char Grille_vider();
 void Grille_tirage_fruit();

@@ -5,4 +5,4 @@
 
 struct Grille * Grille_allouer(int n, int m){
         ;
-};
+}
