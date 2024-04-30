@@ -15,3 +15,4 @@ struct Grille {
 struct Grille *Grille_allouer(int n, int m);
 char Grille_vider();
 void Grille_tirage_fruit();
+void Grille_remplir(struct Grille *g);
