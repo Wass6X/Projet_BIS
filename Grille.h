@@ -5,7 +5,7 @@
 struct Grille {
 	int n;
  	int m;
-	char ** tab;
+	char *** tab;
 	int cordx;
 	int cordy;
 };
