@@ -6,3 +6,5 @@
 struct Grille * Grille_allouer(int n, int m){
         ;
 }
+
+struct Grille vider 
