@@ -39,7 +39,7 @@ struct Grille * Grille_allouer(int n, int m){
 	for (i=0; i<n; i++) {
 		g->tab[i] = malloc(m * sizeof(char*));		
 		for (j=0; j<m; j++) {
-			g->tab[i][j] = malloc(8 * sizeof(char));
+			char g->tab[i][j][8];
 		}
 	}	
 	
