@@ -67,14 +67,7 @@ void Grille_desallouer(struct Grille ** g) {
 		
 		free(*g->tab[i]);
 		*g->tab[i] = NULL;
-	}	
-	
-	/*à voir si c'est utile:
-		free(g->tab);
-		g->tab = NULL;
-		
-		**parceque on a tab = tab[0]
-	*/
+	}
 	
 	/* à voir cette partie aussi */	
 	free(*g);
