@@ -55,18 +55,18 @@ void Grille_remplir(struct Grille * g) {
 }
 
 
-void Grille_desallouer(struct Grille * g) {
+void Grille_desallouer(struct Grille ** g) {
 
 	int i, j;
 	
-	for (i=0; i<g->n; i++) {
-		for (j=0; j<g->m; j++) {
-			free(g->tab[i][j]);
-			g->tab[i][j] = NULL;
+	for (i=0; i<*g->n; i++) {
+		for (j=0; j<*g->m; j++) {
+			free(*g->tab[i][j]);
+			*g->tab[i][j] = NULL;
 		}
 		
-		free(g->tab[i]);
-		g->tab[i] = NULL;
+		free(*g->tab[i]);
+		*g->tab[i] = NULL;
 	}	
 	
 	/*à voir si c'est utile:
@@ -77,8 +77,8 @@ void Grille_desallouer(struct Grille * g) {
 	*/
 	
 	/* à voir cette partie aussi */	
-	free(g);
-	g = NULL;
+	free(*g);
+	*g = NULL;
 	
 }
 
