@@ -10,15 +10,15 @@ int main(int argc, char **  argv) {
 	struct Grille * g;
 	
 	if (argc != 3) {
-		fprintf(strderr, "Veuillez entrer le \n");
+		fprintf(stderr, "Veuillez entrer le \n");
 		exit(1);
 	}
 	
-	n = atoi(arvg[1]);
-	m = atoi(arvg[2]);
+	n = atoi(argv[1]);
+	m = atoi(argv[2]);
 	
 	if ((n < 0) || (m<0)) {
-		fprintf(strderr, "Un des arguments est négatif\n");
+		fprintf(stderr, "Un des arguments est négatif\n");
 		exit(1);
 	}
 	
@@ -27,7 +27,6 @@ int main(int argc, char **  argv) {
 	Grille_vider(g);
 	
 	Grille_tirage_fruit(g);
-	
 	
 	
 	return EXIT_SUCCESS;
