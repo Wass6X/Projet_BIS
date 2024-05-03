@@ -14,5 +14,5 @@ struct Grille {
 struct Grille * Grille_allouer(int n, int m);
 void Grille_vider(struct Grille * g);
 void Grille_remplir(struct Grille * g);
-void Grille_tirage_fruit();
+void Grille_tirage_fruit(struct Grille * g);
 void Grille_desallouer(struct Grille ** g);
