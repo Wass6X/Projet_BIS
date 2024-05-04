@@ -77,3 +77,14 @@ void Grille_desallouer(struct Grille ** g) {
 	
 }
 
+void Grille_redessiner(){
+	for (n=0; n<g->n; n++) {
+		
+		for (m=0; m<g->m; m++) {
+			printf("%s", g->tab[n][m]);
+		}
+		printf("\n");
+	
+	}
+}
+
