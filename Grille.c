@@ -81,6 +81,9 @@ void Grille_redessiner(struct Grille *g){
 
 	int i,j;
 
+	printf("\033[2J");
+	printf("\033[H");
+
 	for (i=-1; i<=g->n; i++) {
 			
 		for (j=-1; j<=g->m; j++) {
@@ -94,7 +97,7 @@ void Grille_redessiner(struct Grille *g){
                 		printf("\033[0m%s", g->tab[i][j]);
             		}
 		}
-		printf("\033[0m\n");
+		printf("\033[0m");
 	
 	}
 }
