@@ -46,8 +46,13 @@ void Grille_tirage_fruit(struct Grille *g){
        
        srand(time(NULL));
        
+	if (g == NULL) {
+                return; 
+        }
         g->cordx = rand()%g->n;
         g->cordy = rand()%g->m;
+        
+        Grille_remplir(g, g->cordx, g->cordy);
 
 }
 
