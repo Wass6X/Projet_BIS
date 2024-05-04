@@ -42,6 +42,14 @@ void Grille_vider(struct Grille * g) {
 	}
 }
 
+void Grille_tirage_fruit(struct Grille *g){
+       
+        g->cordx = rand()%g->n;
+        g->cordy = rand()%g->m;
+        
+}
+
+
 
 void Grille_remplir(struct Grille * g, int x, int y) {
 	g->tab[x][y] = "\x1b[41m  \x1b[0m";	
@@ -62,7 +70,6 @@ void Grille_desallouer(struct Grille ** g) {
 		*(g)->tab[i] = NULL;
 	}
 	
-	/* à voir cette partie aussi */	
 	free(*g);
 	*g = NULL;
 	

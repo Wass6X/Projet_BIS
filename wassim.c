@@ -10,6 +10,8 @@ void Grille_tirage_fruit(struct Grille *g){
         }
         g->cordx = rand()%g->n;
         g->cordy = rand()%g->m;
+        
+        Grille_remplir(g, g->cordx, g->cordy)
 }
 
 

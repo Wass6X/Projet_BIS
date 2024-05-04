@@ -28,6 +28,8 @@ int main(int argc, char **  argv) {
 	
 	Grille_tirage_fruit(g);
 	
+	Grille_remplir(g, g->cordx, g->cordy);
+	
 	
 	return EXIT_SUCCESS;
 }
