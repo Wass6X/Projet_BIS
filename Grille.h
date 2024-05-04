@@ -23,4 +23,6 @@ void Grille_remplir(struct Grille * g, int x, int y);
 
 void Grille_desallouer(struct Grille ** g);
 
+void Grille_redessiner(struct Grille *g);
+
 #endif
