@@ -37,7 +37,7 @@ void Grille_vider(struct Grille * g) {
 	
 	for (i=0; i<g->n; i++) {
 		for (j=0; j<g->m; j++) {
-			g->tab[i][j] = "\x1b[40m  \x1b[0m";	
+			g->tab[i][j] = "\033[40m  ";	
 		}
 	}
 }
@@ -54,7 +54,7 @@ void Grille_tirage_fruit(struct Grille *g){
 
 
 void Grille_remplir(struct Grille * g, int x, int y) {
-	g->tab[x][y] = "\x1b[41m  \x1b[0m";	
+	g->tab[x][y] = "\033[41m  ";	
 }
 
 

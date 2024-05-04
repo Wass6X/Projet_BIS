@@ -1,6 +1,7 @@
 #ifndef GRILLE_H
 #define GRILLE_H
 
+#include "Serpent.h"
 
 /*Déclaration de la structure Grille*/
 struct Grille {
@@ -11,7 +12,7 @@ struct Grille {
 	int cordy;
 };
 
-
+	
 /*Déclaration des fonctions pour Grille.c*/
 struct Grille * Grille_allouer(int n, int m);
 
