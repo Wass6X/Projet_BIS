@@ -98,7 +98,7 @@ void Grille_redessiner(struct Grille *g){
             		}
 		}
 		printf("\033[0m");
-	
+		printf("\033[1E");
 	}
 }
 
