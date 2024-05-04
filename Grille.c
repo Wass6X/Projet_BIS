@@ -77,13 +77,20 @@ void Grille_desallouer(struct Grille ** g) {
 	
 }
 
-void Grille_redessiner(){
-	for (n=0; n<g->n; n++) {
-		
-		for (m=0; m<g->m; m++) {
-			printf("%s", g->tab[n][m]);
+void Grille_redessiner(struct Grille *g){
+
+	int i,j;
+
+	for (i=-1; i<g->n+1; i++) {
+			
+		for (j=-1; j<g->m+1; j++) {
+			if(i=-1 || i=g->n || j=-1 || j=g->m){
+				printf("\033[41m");
+			}else{
+				printf("%s", g->tab[n][m]);
+			}
 		}
-		printf("\n");
+		printf("\\33[1E");
 	
 	}
 }
