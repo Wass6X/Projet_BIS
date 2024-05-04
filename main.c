@@ -11,7 +11,7 @@ int main(int argc, char **  argv) {
 	struct Grille * g;
 	
 	if (argc != 3) {
-		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (3)\n");
+		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (2)\n");
 		exit(1);
 	}
 	

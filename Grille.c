@@ -83,17 +83,27 @@ void Grille_redessiner(struct Grille *g){
 
 	printf("\033[2J");
 	printf("\033[H");
-
-	for (i=-1; i<=g->n; i++) {
-		for (j=-1; j<=g->m; j++) {
-			if(i==-1 || i==g->n || j==-1 || j==g->m){
-				printf("\033[42m  ");
-            		}else{
-                		printf("\033[0m%s", g->tab[i][j]);
-            		}
+	
+	for (j=0; j<g->m+2; j++) {
+		printf("\033[42m  ");
+       	}
+	
+	printf("\033[1E");
+	
+	for (i=0; i<g->n; i++) {
+		printf("\033[42m  ");
+		for (j=0; j<g->m; j++) {
+                	printf("%s", g->tab[i][j]);
 		}
-		printf("\033[0m");
-		printf("\033[1E");
+		printf("\033[42m  ");
+		printf("\033[1E"); 
 	}
+	
+	for (j=0; j<g->m+2; j++) {
+		printf("\033[42m  ");
+	}
+	
+	printf("\033[0m\n");
+
 }
 
