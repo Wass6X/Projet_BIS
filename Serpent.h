@@ -7,7 +7,10 @@
 struct serpent {
 	int cordx;
 	int cordy;
-	struct liste_section ls_section;	
+	struct liste * chaine;	
 };
+
+/* Fonction permertant d'alouer un espace pour le serpent et qui prend en entrée les dimensions de la grille */
+struct serpent * creer_serpent(int n, int m); 
 
 #endif

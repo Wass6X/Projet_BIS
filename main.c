@@ -5,9 +5,7 @@
 
 
 int main(int argc, char **  argv) {
-	
-	int n, m;	
-	
+		
 	struct Grille * g;
 	
 	if (argc != 3) {
@@ -15,15 +13,13 @@ int main(int argc, char **  argv) {
 		exit(1);
 	}
 	
-	n = atoi(argv[1]);
-	m = atoi(argv[2]);
+	g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
+
 	
-	if ((n < 0) || (m<0)) {
+	if ((g->n < 0) || (g->m<0)) {
 		fprintf(stderr, "Un des arguments est négatif\n");
 		exit(1);
 	}
-	
-	g = Grille_allouer(n, m);
 	
 	Grille_vider(g);
 	
@@ -32,6 +28,12 @@ int main(int argc, char **  argv) {
 	Grille_remplir(g, g->cordx, g->cordy);
 	
 	Grille_redessiner(g);
+	
+	creer_serpent(g->n, g->m);
+	
+	Grille_desallouer(&g);
+	
+	printf("\n");
 	
 	return EXIT_SUCCESS;
 }
