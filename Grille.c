@@ -84,10 +84,10 @@ void Grille_redessiner(struct Grille *g){
 	for (i=-1; i<g->n +1; i++) {
 			
 		for (j=-1; j<g->m +1; j++) {
-			if(i=-1 || i=g->n || j=-1 || j=g->m){
+			if(i==-1 || i==g->n || j==-1 || j==g->m){
 				printf("\033[41m");
 			}else{
-				printf("%s", g->tab[n][m]);
+				printf("%s", g->tab[i][j]);
 			}
 		}
 		printf("\\33[1E");
