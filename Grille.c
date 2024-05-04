@@ -85,9 +85,9 @@ void Grille_redessiner(struct Grille *g){
 			
 		for (j=-1; j<=g->m; j++) {
 			if(i==-1){
-				printf("\033[42m▄");
+				printf("\033[42m  ");
 			}else if(i==g->n){
-				printf("\033[42m▀");
+				printf("\033[42m  ");
 			}else if (j == -1 || j == g->m) {
                 		printf("\033[42m ");
             		}else {
