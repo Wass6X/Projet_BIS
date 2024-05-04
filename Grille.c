@@ -44,6 +44,8 @@ void Grille_vider(struct Grille * g) {
 
 void Grille_tirage_fruit(struct Grille *g){
        
+       srand(time(NULL));
+       
         g->cordx = rand()%g->n;
         g->cordy = rand()%g->m;
 
