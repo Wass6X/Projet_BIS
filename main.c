@@ -31,7 +31,7 @@ int main(int argc, char **  argv) {
 	
 	Grille_remplir(g, g->cordx, g->cordy);
 	
-	
+	Grille_redessiner(g);
 	
 	return EXIT_SUCCESS;
 }
