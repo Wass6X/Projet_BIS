@@ -36,11 +36,13 @@ struct liste * creer_liste() {
 	return l;
 }
 
-
+int est_vide(struct liste * l) {
+	return (l->longueur == 0);
+}
 
 void ajout_debut_liste(struct liste * l, struct section * s) {
 		
-	if (l->longueur == 0) 
+	if (est_vide(l)) 
 		l->dernier = s;
 	
 	s->suivant = l->premier;
@@ -54,7 +56,7 @@ void ajout_fin_liste(struct liste * l, struct section * s) {
 	
 	s->suivant = NULL;
 	
-	if (l->longueur == 0) {
+	if (est_vide(l)) {
 		l->premier = s;
 	}else {
 		l->dernier->suivant = s;
@@ -66,6 +68,18 @@ void ajout_fin_liste(struct liste * l, struct section * s) {
 
 }
 
+struct section * extraire_section(struct liste ** l) {
+	
+	struct section * s;
+	
+	s = (*l)->premier;
+	desalouer_section(&(*l)->premier);
+	(*l)->premier = s->suivant;
+	
+	return s;
+}
+
+
 void desalouer_liste(struct liste ** l) {
 
 	/*On Vérifie d'abord que l'argument entré correspond à une liste déja allouée dans le tas*/	
@@ -76,10 +90,8 @@ void desalouer_liste(struct liste ** l) {
 		
 		/* On libère toutes les sections de la liste une par une*/
 		
-		while((*l)->longueur > 0) {
-			s = (*l)->premier;
-			desalouer_section(&(*l)->premier);
-			(*l)->premier = s->suivant;
+		while(!est_vide(*l)) {
+			s = extraire_section(l);
 			(*l)->longueur--;
 		}
 		

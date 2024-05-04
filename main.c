@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Grille.h"
-
-
+#include "Serpent.h"
 
 int main(int argc, char **  argv) {
 		
 	struct Grille * g;
+	
+	struct serpent * serp;
 	
 	if (argc != 3) {
 		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (2)\n");
@@ -25,11 +26,13 @@ int main(int argc, char **  argv) {
 	
 	Grille_tirage_fruit(g);
 	
-	Grille_remplir(g, g->cordx, g->cordy);
+	Grille_remplir_rouge(g, g->cordx, g->cordy);
 	
 	Grille_redessiner(g);
 	
-	creer_serpent(g->n, g->m);
+	serp = creer_serpent(g->n, g->m);
+	
+	Grille_remplir_serp(g, serp);
 	
 	Grille_desallouer(&g);
 	

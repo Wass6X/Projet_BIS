@@ -8,7 +8,7 @@ struct serpent * creer_serpent(int n, int m) {
 	struct serpent * serp = malloc(sizeof(struct serpent));
 
 	srand(time(NULL));
-
+	
 	serp->cordx = rand() % n;
 	serp->cordy = rand() % m;
 	
@@ -16,7 +16,10 @@ struct serpent * creer_serpent(int n, int m) {
 	
 	ajout_debut_liste(serp->chaine, creer_section(5, 42));
 	ajout_debut_liste(serp->chaine, creer_section(6, 43));
-	ajout_debut_liste(serp->chaine, creer_section(7, 44));
+	ajout_debut_liste(serp->chaine, creer_section(6, 45));
+	
+	ajout_fin_liste(serp->chaine, creer_section(4, 44));
+	ajout_fin_liste(serp->chaine, creer_section(3, 46));
 	
 	return serp;
 
