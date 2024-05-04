@@ -60,14 +60,14 @@ void Grille_desallouer(struct Grille ** g) {
 
 	int i, j;
 	
-	for (i=*(g)->n-1; i>-1; i--) {
-		for (j=*(g)->m-1; j>-1; j--) {
-			free(*(g)->tab[i][j]);
-			*(g)->tab[i][j] = NULL;
+	for (i=(*g)->n-1; i>-1; i--) {
+		for (j=(*g)->m-1; j>-1; j--) {
+			free((*g)->tab[i][j]);
+			(*g)->tab[i][j] = NULL;
 		}
 		
-		free(*(g)->tab[i]);
-		*(g)->tab[i] = NULL;
+		free((*g)->tab[i]);
+		(*g)->tab[i] = NULL;
 	}
 	
 	free(*g);
