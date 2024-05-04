@@ -1,6 +1,7 @@
-#include "Grille.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "Grille.h"
+
 
 
 int main(int argc, char **  argv) {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef GRILLE_H
+#define GRILLE_H
 
 
 /*Déclaration de la structure Grille*/
@@ -22,3 +22,5 @@ void Grille_tirage_fruit(struct Grille * g);
 void Grille_remplir(struct Grille * g, int x, int y);
 
 void Grille_desallouer(struct Grille ** g);
+
+#endif

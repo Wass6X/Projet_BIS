@@ -46,7 +46,7 @@ void Grille_tirage_fruit(struct Grille *g){
        
         g->cordx = rand()%g->n;
         g->cordy = rand()%g->m;
-        
+
 }
 
 
@@ -74,6 +74,4 @@ void Grille_desallouer(struct Grille ** g) {
 	*g = NULL;
 	
 }
-
-
 
