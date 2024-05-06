@@ -5,7 +5,7 @@
 
 struct section * creer_section(int taille, int couleur) {
 	
-	struct section * s = malloc(sizeof(struct section *));
+	struct section * s = malloc(sizeof(struct section));
 	
 	s->taille = taille;
 	s->couleur = couleur;

@@ -13,7 +13,7 @@ struct Grille * Grille_allouer(int n, int m){
         
         g->n = n;
         g->m = m;
-
+	
         g->tab = malloc(n * sizeof(char **));
 	
 	for (i=0; i<n; i++) {
@@ -55,7 +55,7 @@ void Grille_tirage_fruit(struct Grille *g){
 
 
 void Grille_remplir_rouge(struct Grille * g, int x, int y) {
-	g->tab[x][y] = "\033[41m  ";	
+	g->tab[x][y] = "\033[101m  ";	
 }
 
 
@@ -68,7 +68,7 @@ void Grille_desallouer(struct Grille ** g) {
 	
 	for (i=0; i<(*g)->n; i++) {
 		for (j=0; j<(*g)->m; j++) {
-			/* free((*g)->tab[i][j]); */
+			free((*g)->tab[i][j]);
 			(*g)->tab[i][j] = NULL;
 		}
 		
@@ -118,6 +118,8 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 
 
 void Grille_remplir_serp(struct Grille * g, struct serpent * serp) {
+	
+	struct section * s;
 	
 	if (g == NULL)
 		return;
