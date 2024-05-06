@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "Grille.h"
 #include "Serpent.h"
 #include "Liste_Section.h"
@@ -61,14 +62,14 @@ void Grille_remplir_rouge(struct Grille * g, int x, int y) {
 
 void Grille_desallouer(struct Grille ** g) {
 
-	int i, j;
+	int i, j;	
 	
 	if (*g == NULL)
        		return;
 	
 	for (i=0; i<(*g)->n; i++) {
 		for (j=0; j<(*g)->m; j++) {
-			free((*g)->tab[i][j]);
+			/*free((*g)->tab[i][j])*/;
 			(*g)->tab[i][j] = NULL;
 		}
 		
@@ -97,7 +98,7 @@ void Grille_redessiner(struct Grille *g){
 	for (i=0; i<g->n; i++) {
 		printf("\033[42m  ");
 		for (j=0; j<g->m; j++) {
-                	printf("%s", g->tab[i][j]);
+                	printf("%s\033[0m", g->tab[i][j]);
 		}
 		printf("\033[42m  ");
 		printf("\033[1E"); 
@@ -112,25 +113,50 @@ void Grille_redessiner(struct Grille *g){
 }
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
-	if (couleur>39 && couleur<48)
-    		sprintf(g->tab[x][y], "\033[%dm  ", couleur);
+	
+	if (couleur>39 && couleur<48){
+		char * color = malloc(8 * sizeof(char));
+		snprintf(color, 8, "\033[%dm  ", couleur);
+		/*
+		if (g->tab[x][y] != NULL) {
+            		free(g->tab[x][y]);
+        	}
+		*/
+		g->tab[x][y] = color;
+	}
 }
 
 
 void Grille_remplir_serp(struct Grille * g, struct serpent * serp) {
 	
+	int i=0, j;
+	int stop = 0;
+	
 	struct section * s;
 	
-	if (g == NULL)
-		return;
+	if (g == NULL || serp == NULL || est_vide(serp->chaine))
+        	return;
 	
-	while(!(est_vide(serp->chaine))) {
-			s = extraire_section(&serp->chaine);
-			Grille_remplir_couleur(g, serp->cordx, serp->cordy, s->couleur);	
-			serp->chaine->longueur--;
+
+	while(!(est_vide(serp->chaine)) && !(stop)) {
+		
+		s = extraire_section(serp->chaine);
+		
+		for(j=0; (j<s->taille) && !(stop); j++) {
+		
+			if (serp->cordy+i < g->m){	
+				Grille_remplir_couleur(g, serp->cordx, serp->cordy + i, s->couleur);			
+				i++;	
+			}
+			
+			else
+				stop=1;
+			
+		}
+			
 	}
 	
 	desalouer_section(&s);
+		
 
 }
-

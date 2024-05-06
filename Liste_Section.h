@@ -28,7 +28,7 @@ void ajout_debut_liste(struct liste * l, struct section * s);
 /* Fonction permettant d'ajouter une section à la fin de la liste */
 void ajout_fin_liste(struct liste * l, struct section * s);
 
-struct section * extraire_section(struct liste ** l);
+struct section * extraire_section(struct liste * l);
 
 void desalouer_liste(struct liste ** l);
 

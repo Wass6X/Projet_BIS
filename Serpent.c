@@ -1,26 +1,22 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Serpent.h"
-#include "time.h"
 
 struct serpent * creer_serpent(int n, int m) {
 
-	struct serpent * serp = malloc(sizeof(struct serpent));
-
-	srand(time(NULL));
-	
-	serp->cordx = rand() % n;
-	serp->cordy = rand() % m;
-	
+	struct serpent * serp = malloc(sizeof(struct serpent)); 
+    
+	serp->cordx = 10;
+	serp->cordy = 10;
+    
 	serp->chaine = creer_liste();
 	
-	ajout_debut_liste(serp->chaine, creer_section(5, 42));
-	ajout_debut_liste(serp->chaine, creer_section(6, 43));
-	ajout_debut_liste(serp->chaine, creer_section(6, 45));
-	
-	ajout_fin_liste(serp->chaine, creer_section(4, 44));
-	ajout_fin_liste(serp->chaine, creer_section(3, 46));
-	
+	ajout_debut_liste(serp->chaine, creer_section(2, 42));
+	ajout_debut_liste(serp->chaine, creer_section(3, 43));
+	ajout_debut_liste(serp->chaine, creer_section(2, 45));
+    
+	ajout_fin_liste(serp->chaine, creer_section(1, 44));
+	ajout_fin_liste(serp->chaine, creer_section(1	, 46));
+    
 	return serp;
-
 }

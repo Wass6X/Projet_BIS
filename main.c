@@ -34,7 +34,10 @@ int main(int argc, char **  argv) {
 	
 	Grille_remplir_serp(g, serp);
 	
-	/* Grille_desallouer(&g); */
+	Grille_redessiner(g);
+	
+	Grille_desallouer(&g);
+
 	
 	printf("\n");
 	

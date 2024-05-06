@@ -17,11 +17,12 @@ struct section * creer_section(int taille, int couleur) {
 
 void desalouer_section(struct section ** s) {
 	
-	if (*s == NULL)
-		return;
-		
-	free(*s);
-	*s = NULL;
+	if (*s != NULL) {
+			
+		free(*s);
+		*s = NULL;	
+	
+	}
 	
 }
 
@@ -68,13 +69,22 @@ void ajout_fin_liste(struct liste * l, struct section * s) {
 
 }
 
-struct section * extraire_section(struct liste ** l) {
+struct section * extraire_section(struct liste * l) {
 	
-	struct section * s;
+	struct section * s = l->premier;
 	
-	s = (*l)->premier;
-	desalouer_section(&(*l)->premier);
-	(*l)->premier = s->suivant;
+	if (s != NULL) {
+	
+   		l->premier = s->suivant;
+    	
+    		l->longueur--;
+    		
+    		if (est_vide(l)) 
+    			l->dernier = NULL; 
+    
+    		s->suivant = NULL;
+	
+	}
 	
 	return s;
 }
@@ -91,8 +101,7 @@ void desalouer_liste(struct liste ** l) {
 		/* On libère toutes les sections de la liste une par une*/
 		
 		while(!est_vide(*l)) {
-			s = extraire_section(l);
-			(*l)->longueur--;
+			s = extraire_section(*l);
 		}
 		
 		/* On libère la section temporaire */
