@@ -69,7 +69,7 @@ void Grille_desallouer(struct Grille ** g) {
 	
 	for (i=0; i<(*g)->n; i++) {
 		for (j=0; j<(*g)->m; j++) {
-			/*free((*g)->tab[i][j])*/;
+			free((*g)->tab[i][j]);
 			(*g)->tab[i][j] = NULL;
 		}
 		
@@ -116,11 +116,6 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>39 && couleur<48){
 		snprintf(g->tab[x][y], 8, "\033[%dm  ", couleur);
-		/*
-		if (g->tab[x][y] != NULL) {
-            		free(g->tab[x][y]);
-        	}
-		*/
 	}
 }
 
