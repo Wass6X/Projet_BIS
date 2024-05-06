@@ -28,8 +28,6 @@ int main(int argc, char **  argv) {
 	
 	Grille_remplir_rouge(g, g->cordx, g->cordy);
 	
-	Grille_redessiner(g);
-	
 	serp = creer_serpent(g->n, g->m);
 	
 	Grille_remplir_serp(g, serp);
