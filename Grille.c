@@ -39,7 +39,7 @@ void Grille_vider(struct Grille * g) {
 	
 	for (i=0; i<g->n; i++) {
 		for (j=0; j<g->m; j++) {
-			g->tab[i][j] = "\033[40m  ";	
+			strcpy(g->tab[i][j], "\033[40m  ");	
 		}
 	}
 }
@@ -56,7 +56,7 @@ void Grille_tirage_fruit(struct Grille *g){
 
 
 void Grille_remplir_rouge(struct Grille * g, int x, int y) {
-	g->tab[x][y] = "\033[101m  ";	
+	strcpy(g->tab[x][y], "\033[101m  ");	
 }
 
 
@@ -115,14 +115,12 @@ void Grille_redessiner(struct Grille *g){
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>39 && couleur<48){
-		char * color = malloc(8 * sizeof(char));
-		snprintf(color, 8, "\033[%dm  ", couleur);
+		snprintf(g->tab[x][y], 8, "\033[%dm  ", couleur);
 		/*
 		if (g->tab[x][y] != NULL) {
             		free(g->tab[x][y]);
         	}
 		*/
-		g->tab[x][y] = color;
 	}
 }
 
