@@ -8,8 +8,7 @@
 
 
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
-    int ch, ch_dern;
-  	int i=0;
+    int ch;
     
     do{
   
