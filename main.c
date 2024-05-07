@@ -46,7 +46,7 @@ int main(int argc, char **  argv) {
 	
 	Grille_redessiner(g);
 
-	Jouer_Serpent(g);
+	Jouer_Serpent(g, serp);
 	
 	Grille_desallouer(&g);
 

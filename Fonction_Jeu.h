@@ -2,7 +2,8 @@
 #define FONCTION_JEU_H
 
 #include "Grille.h"
+#include "Serpent.h"
 
-Jouer_Serpent(struct Grille *g, struct Serpent *serp);
+void Jouer_Serpent(struct Grille *g, struct Serpent *serp);
 
 #endif
