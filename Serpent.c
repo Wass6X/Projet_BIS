@@ -12,11 +12,6 @@ struct Serpent * creer_serpent(int n, int m) {
 	serp->chaine = creer_liste();
 	
 	ajout_debut_liste(serp->chaine, creer_section(2, 42));
-	ajout_debut_liste(serp->chaine, creer_section(3, 43));
-	ajout_debut_liste(serp->chaine, creer_section(2, 45));
-    
-	ajout_fin_liste(serp->chaine, creer_section(1, 44));
-	ajout_fin_liste(serp->chaine, creer_section(1	, 46));
     
 	return serp;
 }
