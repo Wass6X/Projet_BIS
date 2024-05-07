@@ -15,3 +15,27 @@ struct Serpent * creer_serpent(int n, int m) {
     
 	return serp;
 }
+
+struct Case * creer_case(enum sens) {
+	
+	struct Case * c = malloc(sizeof(struct Case));
+	
+	c->sens = sens;
+	c->suivant = NULL;
+	
+	return c;
+
+}
+
+
+struct Liste_Mouvement * creer_liste_mouvement() {
+
+	struct Liste_Mouvement * lm = malloc(sizeof(struct Liste_Mouvement));	
+	
+	lm->premier = NULL;
+	lm->dernier = NULL;
+	lm->longueur = 0;
+		
+	return lm;
+}
+

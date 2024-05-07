@@ -47,7 +47,7 @@ void ajout_debut_liste(struct Liste * l, struct Section * s) {
 		l->dernier = s;
 	
 	s->suivant = l->premier;
-	
+		
 	l->premier = s;
 
 	l->longueur++;
