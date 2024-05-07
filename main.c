@@ -3,6 +3,7 @@
 #include "Grille.h"
 #include "Serpent.h"
 #include "Fonction_Jeu.h"
+#include "Liste_Section.h"
 #include <ncurses.h>
 
 int main(int argc, char **  argv) {
