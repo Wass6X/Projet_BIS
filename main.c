@@ -9,8 +9,8 @@ int main(int argc, char **  argv) {
 	
 	struct serpent * serp;
 	
-	if (argc != 3) {
-		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (2)\n");
+	if (argc != 5) {
+		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (4)\n");
 		exit(1);
 	}
 	
@@ -21,6 +21,18 @@ int main(int argc, char **  argv) {
 		fprintf(stderr, "Un des arguments est négatif\n");
 		exit(1);
 	}
+
+	int ch, ch_dern;
+  	int i=0,o;
+
+  	/* Initialisation de ncurses et du clavier(4 lignes)*/
+  	initscr();
+  	raw();
+ 	 keypad(stdscr, TRUE);
+  	noecho();
+
+
+  	halfdelay(atoi(argv[3])); 
 	
 	Grille_vider(g);
 	
