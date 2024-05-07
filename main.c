@@ -30,10 +30,10 @@ int main(int argc, char **  argv) {
 	
 
   	/* Initialisation de ncurses et du clavier(4 lignes)*/
-  	initscr();            // Initialise l'écran avec ncurses
-    	cbreak();             // Les entrées au clavier sont disponibles immédiatement
-    	noecho();             // Les entrées clavier ne sont pas affichées à l'écran
-    	keypad(stdscr, TRUE); // Permet d'utiliser les touches fléchées
+  	initscr();
+	raw();            
+    	noecho();             
+    	keypad(stdscr, TRUE); 
 
 
   	halfdelay(atoi(argv[3])); 
