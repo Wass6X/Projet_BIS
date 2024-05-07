@@ -5,7 +5,7 @@
 #include"Liste_Section"
 #include<ncurses.h>
 
-void Jouer_Serpent(struct Grille *g){
+void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
    int ch, ch_dern;
   	int i=0,o;
     
@@ -35,6 +35,7 @@ void Jouer_Serpent(struct Grille *g){
 
     switch(ch_dern) {  
         case KEY_UP:   /* Ces constantes sont dans ncurses pour correspondre aux codes de touches */
+            serp->codx--;
             serp = creer_serpent(g->n, g->m);
 	         Grille_remplir_serp(g, serp);
 	         Grille_redessiner(g);
@@ -42,27 +43,27 @@ void Jouer_Serpent(struct Grille *g){
             i=0;
             break;
         case KEY_DOWN:
+            serp->codx++;
             serp = creer_serpent(g->n, g->m);
 	         Grille_remplir_serp(g, serp);
 	         Grille_redessiner(g); 
             printf("La derniere touche utilisee est: Down Arrow\33[1E");
             break;
         case KEY_LEFT:
+            serp->cody--;
             serp = creer_serpent(g->n, g->m);
 	         Grille_remplir_serp(g, serp);
 	         Grille_redessiner(g); 
             printf("La derniere touche utilisee est: Left Arrow\33[1E");
             break; 
         case KEY_RIGHT:
+            serp->cody++;
             serp = creer_serpent(g->n, g->m);
 	         Grille_remplir_serp(g, serp);
 	         Grille_redessiner(g); 
             printf("La derniere touche utilisee est: Right Arrow\33[1E");
             break;
         default:
-            serp = creer_serpent(g->n, g->m);
-            Grille_remplir_serp(g, serp);
-            Grille_redessiner(g);
             printf("La derniere touche utilisee est: %c\33[1E",ch_dern);
          break;
       }
