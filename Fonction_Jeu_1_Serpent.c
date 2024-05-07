@@ -1,9 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<ncurses.h>
 #include"Fonction_Jeu.h"
 #include"Grille.h"
+#include "Serpent.h"
 #include"Liste_Section.h"
-#include<ncurses.h>
+
 
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
    int ch, ch_dern;
