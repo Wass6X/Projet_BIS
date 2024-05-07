@@ -1,5 +1,5 @@
 all: Liste_Section.o Serpent.o Grille.o Fonction_Jeu.o main.o
-	gcc Liste_Section.o Serpent.o Grille.o main.o -o exec
+	gcc Liste_Section.o Serpent.o Grille.o Fonction_Jeu.o main.o -o exec
 
 Liste_Section.o: Liste_Section.c Liste_Section.h
 	gcc -c -Wall -pedantic -std=c99 Liste_Section.c
@@ -13,7 +13,7 @@ Grille.o: Grille.c Grille.h Serpent.h Liste_Section.h
 Fonction_Jeu.o: Fonction_Jeu.c Fonction_Jeu.h Grille.h Serpent.h Liste_Section.c
 	gcc -c -Wall -pedantic -std=c99 Fonction_Jeu.c
 
-main.o: Fonction_Jeu.h main.c Grille.h Serpent.h Liste_Section.h
+main.o: main.c Fonction_Jeu.h Grille.h Serpent.h Liste_Section.h
 	gcc -c -Wall -pedantic -std=c99 main.c
 
 clean:
