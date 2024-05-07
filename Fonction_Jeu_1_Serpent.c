@@ -8,69 +8,43 @@
 
 
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
+
     int ch;
     
-    do{
-  
-    ch = getch();
-    
-    i++;  /* Compteur pour se rendre compte que "le temps passe" */
+    Grille_redessiner(g);
 
-    if (ch==-1){  /* Si aucune touche utilisee, getch renvoie -1 */
-       /* Comme aucune touche n'a ete utilisee
-          le programme peut faire autre chose */
-       printf("%d\33[1E",i);  /* Par exemple : afficher un compteur */
-    } 
-    else{
-       /* Ici une touche a ete utilisee, getch a renvoyee son code
-          le programme peut repondre a l'utilisateur du clavier*/
-      ch_dern=ch; /* Par exemple ic, on sauvegarde la dernière touche utilisee pour l'afficher*/     
-    
+    bool gameRunning = true;
+
+    while (gameRunning && (ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
+        switch (ch) {
+            case KEY_UP:
+                if (serp->cordx == 0) gameRunning = false; // Stoppe le jeu si on touche un bord
+                else serp->cordx--;
+                break;
+            case KEY_DOWN:
+                if (serp->cordx == g->n - 1) gameRunning = false;
+                else serp->cordx++;
+                break;
+            case KEY_LEFT:
+                if (serp->cordy == 0) gameRunning = false;
+                else serp->cordy--;
+                break;
+            case KEY_RIGHT:
+                if (serp->cordy == g->m - 1) gameRunning = false;
+                else serp->cordy++;
+                break;
+        }
+
+        if (gameRunning) {
+            Grille_remplir_serp(g, serp); // Met à jour la grille avec la nouvelle position du serpent
+            Grille_redessiner(g); // Redessine la grille
+        }
     }
-    
-    /* A partir d'ici, les actions sont effectuees que l'utilisateur ait appuye ou non sur une touche) */
-    
-    printf("\33[2J"); /* Efface tout l'ecran */
-    printf("\33[H");  /* Place le curseur en haut à gauche */
-    printf("Test: appuyez une touche (ou appuyez sur # pour Sortir)\n\33[1E");
 
-    switch(ch_dern) {  
-        case KEY_UP:   /* Ces constantes sont dans ncurses pour correspondre aux codes de touches */
-            serp->cordx--;
-            serp = creer_serpent(g->n, g->m);
-	         Grille_remplir_serp(g, serp);
-	         Grille_redessiner(g);
-            printf("La derniere touche utilisee est: Up Arrow\33[1E");
-            i=0;
-            break;
-        case KEY_DOWN:
-            serp->cordx++;
-            serp = creer_serpent(g->n, g->m);
-	         Grille_remplir_serp(g, serp);
-	         Grille_redessiner(g); 
-            printf("La derniere touche utilisee est: Down Arrow\33[1E");
-            break;
-        case KEY_LEFT:
-            serp->cordy--;
-            serp = creer_serpent(g->n, g->m);
-	         Grille_remplir_serp(g, serp);
-	         Grille_redessiner(g); 
-            printf("La derniere touche utilisee est: Left Arrow\33[1E");
-            break; 
-        case KEY_RIGHT:
-            serp->cordy++;
-            serp = creer_serpent(g->n, g->m);
-	         Grille_remplir_serp(g, serp);
-	         Grille_redessiner(g); 
-            printf("La derniere touche utilisee est: Right Arrow\33[1E");
-            break;
-        default:
-            printf("La derniere touche utilisee est: %c\33[1E",ch_dern);
-         break;
-      }
-      
-   fflush(stdout);  /* Force l'affichage compler des commandes precedentes */
-   
-  } while (ch!= '#');
+    endwin(); // Termine la session ncurses
+
+    if (!gameRunning) {
+        printf("Game over: Le serpent a heurté un bord!\n");
+    }
 
 }

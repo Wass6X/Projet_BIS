@@ -38,7 +38,6 @@ int main(int argc, char **  argv) {
 
   	halfdelay(atoi(argv[3])); 
 	
-	Grille_vider(g);
 	
 	Grille_tirage_fruit(g);
 	
@@ -54,11 +53,7 @@ int main(int argc, char **  argv) {
 	
 	Grille_desallouer(&g);
 
-	
-	endwin(); /* Doit obligatoirement etre mis en fin de programme pour remettre le terminal en etat */
-  
-  	printf("\n\nAu revoir !\n");
-	
+	printf("\n\nAu revoir !\n");
 	
 	return EXIT_SUCCESS;
 }
