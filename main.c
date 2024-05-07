@@ -28,7 +28,7 @@ int main(int argc, char **  argv) {
   	/* Initialisation de ncurses et du clavier(4 lignes)*/
   	initscr();
   	raw();
- 	 keypad(stdscr, TRUE);
+ 	keypad(stdscr, TRUE);
   	noecho();
 
 
@@ -49,7 +49,10 @@ int main(int argc, char **  argv) {
 	Grille_desallouer(&g);
 
 	
-	printf("\n");
+	endwin(); /* Doit obligatoirement etre mis en fin de programme pour remettre le terminal en etat */
+  
+  	printf("\n\nAu revoir !\n");
+	
 	
 	return EXIT_SUCCESS;
 }

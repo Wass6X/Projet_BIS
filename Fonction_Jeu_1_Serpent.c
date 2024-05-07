@@ -3,20 +3,8 @@
 #include"Fonction_Jeu.h"
 #include<ncurses.h>
 
-int main() {
-  int ch, ch_dern;
-  int i=0,o;
-
-  /* Initialisation de ncurses et du clavier(4 lignes)*/
-  initscr();
-  raw();
-  keypad(stdscr, TRUE);
-  noecho();
-
-
-  halfdelay(1);  /* Temps d'exécution max de getch à 1/10eme de seconde */
-
-  do{
+void Jouer_Serpent(){
+    do{
   
     ch = getch();
     
@@ -64,10 +52,6 @@ int main() {
   } while (ch!= '#');
 
     
-  endwin(); /* Doit obligatoirement etre mis en fin de programme pour remettre le terminal en etat */
-  
-  printf("\n\nAu revoir !\n");
 
-
-  return 0;
+        
 }
