@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Fonction_Jeu.h"
+#include"Grille.h"
+#include"Liste_Section"
 #include<ncurses.h>
 
 void Jouer_Serpent(){
@@ -51,7 +53,4 @@ void Jouer_Serpent(){
    
   } while (ch!= '#');
 
-    
-
-        
 }
