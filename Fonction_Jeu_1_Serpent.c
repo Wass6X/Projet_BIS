@@ -5,7 +5,10 @@
 #include"Liste_Section"
 #include<ncurses.h>
 
-void Jouer_Serpent(){
+void Jouer_Serpent(struct Grille *g){
+   int ch, ch_dern;
+  	int i=0,o;
+    
     do{
   
     ch = getch();
@@ -32,21 +35,36 @@ void Jouer_Serpent(){
 
     switch(ch_dern) {  
         case KEY_UP:   /* Ces constantes sont dans ncurses pour correspondre aux codes de touches */
-           printf("La derniere touche utilisee est: Up Arrow\33[1E");
-           i=0;
-           break;
-        case KEY_DOWN: 
-           printf("La derniere touche utilisee est: Down Arrow\33[1E");
-           break;
-        case KEY_LEFT: 
-           printf("La derniere touche utilisee est: Left Arrow\33[1E");
-           break; 
-        case KEY_RIGHT: 
-           printf("La derniere touche utilisee est: Right Arrow\33[1E");
-           break;
+            serp = creer_serpent(g->n, g->m);
+	         Grille_remplir_serp(g, serp);
+	         Grille_redessiner(g);
+            printf("La derniere touche utilisee est: Up Arrow\33[1E");
+            i=0;
+            break;
+        case KEY_DOWN:
+            serp = creer_serpent(g->n, g->m);
+	         Grille_remplir_serp(g, serp);
+	         Grille_redessiner(g); 
+            printf("La derniere touche utilisee est: Down Arrow\33[1E");
+            break;
+        case KEY_LEFT:
+            serp = creer_serpent(g->n, g->m);
+	         Grille_remplir_serp(g, serp);
+	         Grille_redessiner(g); 
+            printf("La derniere touche utilisee est: Left Arrow\33[1E");
+            break; 
+        case KEY_RIGHT:
+            serp = creer_serpent(g->n, g->m);
+	         Grille_remplir_serp(g, serp);
+	         Grille_redessiner(g); 
+            printf("La derniere touche utilisee est: Right Arrow\33[1E");
+            break;
         default:
-           printf("La derniere touche utilisee est: %c\33[1E",ch_dern);
-           break;
+            serp = creer_serpent(g->n, g->m);
+            Grille_remplir_serp(g, serp);
+            Grille_redessiner(g);
+            printf("La derniere touche utilisee est: %c\33[1E",ch_dern);
+         break;
       }
       
    fflush(stdout);  /* Force l'affichage compler des commandes precedentes */

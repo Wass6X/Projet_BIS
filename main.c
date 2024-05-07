@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Grille.h"
 #include "Serpent.h"
+#include <ncurses.h>
 
 int main(int argc, char **  argv) {
 		
@@ -22,8 +23,7 @@ int main(int argc, char **  argv) {
 		exit(1);
 	}
 
-	int ch, ch_dern;
-  	int i=0,o;
+	
 
   	/* Initialisation de ncurses et du clavier(4 lignes)*/
   	initscr();
@@ -45,6 +45,8 @@ int main(int argc, char **  argv) {
 	Grille_remplir_serp(g, serp);
 	
 	Grille_redessiner(g);
+
+	Jouer_Serpent(g);
 	
 	Grille_desallouer(&g);
 
