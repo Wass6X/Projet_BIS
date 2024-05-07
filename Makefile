@@ -1,4 +1,4 @@
-all: Liste_Section.o Serpent.o Grille.o Fonction_Jeu.o main.o
+all: Liste_Section.o Serpent.o Grille.o Fonction_Jeu_1_Serpent.o main.o
 	gcc Liste_Section.o Serpent.o Grille.o Fonction_Jeu.o main.o -o exec
 
 Liste_Section.o: Liste_Section.c Liste_Section.h
