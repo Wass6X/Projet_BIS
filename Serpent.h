@@ -4,13 +4,13 @@
 #include "Liste_Section.h"
 
 
-struct serpent {
+struct Serpent {
 	int cordx;
 	int cordy;
-	struct liste * chaine;	
+	struct Liste * chaine;	
 };
 
 /* Fonction permertant d'alouer un espace pour le serpent et qui prend en entrée les dimensions de la grille */
-struct serpent * creer_serpent(int n, int m); 
+struct Serpent * creer_serpent(int n, int m); 
 
 #endif

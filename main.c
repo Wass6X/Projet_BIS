@@ -7,7 +7,7 @@ int main(int argc, char **  argv) {
 		
 	struct Grille * g;
 	
-	struct serpent * serp;
+	struct Serpent * serp;
 	
 	if (argc != 5) {
 		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (4)\n");

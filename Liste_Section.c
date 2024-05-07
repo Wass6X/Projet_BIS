@@ -3,9 +3,9 @@
 #include "Liste_Section.h"
 
 
-struct section * creer_section(int taille, int couleur) {
+struct Section * creer_section(int taille, int couleur) {
 	
-	struct section * s = malloc(sizeof(struct section));
+	struct Section * s = malloc(sizeof(struct Section));
 	
 	s->taille = taille;
 	s->couleur = couleur;
@@ -15,7 +15,7 @@ struct section * creer_section(int taille, int couleur) {
 
 }
 
-void desalouer_section(struct section ** s) {
+void desalouer_section(struct Section ** s) {
 	
 	if (*s != NULL) {
 			
@@ -26,9 +26,9 @@ void desalouer_section(struct section ** s) {
 	
 }
 
-struct liste * creer_liste() {
+struct Liste * creer_liste() {
 
-	struct liste * l = malloc(sizeof(struct liste));	
+	struct Liste * l = malloc(sizeof(struct Liste));	
 	
 	l->premier = NULL;
 	l->dernier = NULL;
@@ -37,11 +37,11 @@ struct liste * creer_liste() {
 	return l;
 }
 
-int est_vide(struct liste * l) {
+int est_vide(struct Liste * l) {
 	return (l->longueur == 0);
 }
 
-void ajout_debut_liste(struct liste * l, struct section * s) {
+void ajout_debut_liste(struct Liste * l, struct Section * s) {
 		
 	if (est_vide(l)) 
 		l->dernier = s;
@@ -53,7 +53,7 @@ void ajout_debut_liste(struct liste * l, struct section * s) {
 	l->longueur++;
 }
 
-void ajout_fin_liste(struct liste * l, struct section * s) {
+void ajout_fin_liste(struct Liste * l, struct Section * s) {
 	
 	s->suivant = NULL;
 	
@@ -69,9 +69,9 @@ void ajout_fin_liste(struct liste * l, struct section * s) {
 
 }
 
-struct section * extraire_section(struct liste * l) {
+struct Section * extraire_section(struct Liste * l) {
 	
-	struct section * s = l->premier;
+	struct Section * s = l->premier;
 	
 	if (s != NULL) {
 	
@@ -90,13 +90,13 @@ struct section * extraire_section(struct liste * l) {
 }
 
 
-void desalouer_liste(struct liste ** l) {
+void desalouer_liste(struct Liste ** l) {
 
 	/*On Vérifie d'abord que l'argument entré correspond à une liste déja allouée dans le tas*/	
 	if (*l != NULL) {
 		
 		/* Création d'une section temporaire qui va servive à garder une trace de la section libérée*/
-		struct section * s;
+		struct Section * s;
 		
 		/* On libère toutes les sections de la liste une par une*/
 		

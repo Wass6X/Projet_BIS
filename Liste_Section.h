@@ -2,34 +2,34 @@
 #define LISTE_SECTION_H
 
 
-struct section {
+struct Section {
 	int taille;
 	int couleur;
-	struct section * suivant;
+	struct Section * suivant;
 };
 
-struct liste {
-	struct section * premier;
-	struct section * dernier;
+struct Liste {
+	struct Section * premier;
+	struct Section * dernier;
 	int longueur; 
 };
 
-struct section * creer_section(int taille, int couleur);
+struct Section * creer_section(int taille, int couleur);
 
-void desalouer_section(struct section ** s);
+void desalouer_section(struct Section ** s);
 
-struct liste * creer_liste();
+struct Liste * creer_liste();
 
-int est_vide(struct liste * l);
+int est_vide(struct Liste * l);
 
 /* Fonction permettant d'ajouter une section au début de la liste */
-void ajout_debut_liste(struct liste * l, struct section * s);
+void ajout_debut_liste(struct Liste * l, struct Section * s);
 
 /* Fonction permettant d'ajouter une section à la fin de la liste */
-void ajout_fin_liste(struct liste * l, struct section * s);
+void ajout_fin_liste(struct Liste * l, struct Section * s);
 
-struct section * extraire_section(struct liste * l);
+struct Section * extraire_section(struct Liste * l);
 
-void desalouer_liste(struct liste ** l);
+void desalouer_liste(struct Liste ** l);
 
 #endif

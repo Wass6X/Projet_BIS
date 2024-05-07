@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "Serpent.h"
 
-struct serpent * creer_serpent(int n, int m) {
+struct Serpent * creer_serpent(int n, int m) {
 
-	struct serpent * serp = malloc(sizeof(struct serpent)); 
+	struct Serpent * serp = malloc(sizeof(struct Serpent)); 
     
 	serp->cordx = 10;
 	serp->cordy = 10;

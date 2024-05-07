@@ -120,12 +120,12 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 }
 
 
-void Grille_remplir_serp(struct Grille * g, struct serpent * serp) {
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 	
 	int i=0, j;
 	int stop = 0;
 	
-	struct section * s;
+	struct Section * s;
 	
 	if (g == NULL || serp == NULL || est_vide(serp->chaine))
         	return;
