@@ -1,5 +1,5 @@
 all: Liste_Section.o Serpent.o Grille.o Fonction_Jeu_1_Serpent.o main.o
-	gcc Liste_Section.o Serpent.o Grille.o Fonction_Jeu_1_Serpent.o main.o -lncurses -o exec 
+	gcc Liste_Section.o Serpent.o Grille.o Fonction_Jeu_1_Serpent.o main.o -o exec -lncurses
 
 Liste_Section.o: Liste_Section.c Liste_Section.h
 	gcc -c -Wall -pedantic -std=c99 Liste_Section.c
