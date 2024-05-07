@@ -1,4 +1,4 @@
-#ifdef FONCTION_JEU_H
+#ifndef FONCTION_JEU_H
 #define FONCTION_JEU_H
 
 #include "Grille.h"
