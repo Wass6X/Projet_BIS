@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include"Fonction_Jeu.h"
 #include"Grille.h"
-#include"Liste_Section"
+#include"Liste_Section.h"
 #include<ncurses.h>
 
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
