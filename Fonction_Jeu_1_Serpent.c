@@ -19,7 +19,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
     noecho();
     curs_set(0);
     halfdelay(delai);
-
+    refresh();
     
     while ((ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
         switch (ch) {
@@ -45,6 +45,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
         Grille_remplir_serp(g, serp);  // Dessine le serpent
         Grille_redessiner(g);
+        refresh();
 
     }
 

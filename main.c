@@ -29,7 +29,7 @@ int main(int argc, char **  argv) {
 
 
 	int delai = atoi(argv[3]);
-	
+
 
 	// initialisation du la grille
     	Grille_tirage_fruit(g);
