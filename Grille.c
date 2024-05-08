@@ -158,12 +158,6 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 // simplification de grille remplir pour une seule case
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
     
-    struct Section *section = serp->tete;
-
-    while (section != NULL) {
-        Grille_remplir_couleur(g, section->x, section->y, section->couleur);
-        section = section->suivant;
-    }
-
+    Grille_remplir_couleur(g, section->x, section->y, section->couleur);
 
 }
