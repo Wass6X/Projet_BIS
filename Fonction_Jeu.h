@@ -5,6 +5,6 @@
 #include "Serpent.h"
 
 
-void Jouer_Serpent(struct Grille * g, struct Serpent * serp);
+void Jouer_Serpent(struct Grille * g, struct Serpent * serp, int delai);
 
 #endif
