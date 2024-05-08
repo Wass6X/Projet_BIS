@@ -46,9 +46,19 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 break;
         }
 
+        // Vérifier la collision avec le bord
         if (serp->cordx < 0 || serp->cordx >= g->n || serp->cordy < 0 || serp->cordy >= g->m) {
             break;  // Le serpent a heurté un bord
         }
+
+        // Vérifier la collision avec le fruit
+        if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
+            int longueur = (rand() % 5) + 1;  // Longueur aléatoire entre 1 et 5
+            int couleur = (rand() % (47 - 41 + 1)) + 41;  // Couleur aléatoire entre 41 et 47
+            ajout_fin_liste(serp->chaine, creer_section(1, 45));
+            Grille_tirage_fruit(g);  // Générer un nouveau fruit
+        }
+
 
         Grille_vider(g);
         Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
