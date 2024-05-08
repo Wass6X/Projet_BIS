@@ -120,7 +120,7 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 }
 
 
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
+/*void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 	
 	int i=0, j;
 	int stop = 0;
@@ -155,12 +155,12 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 	desalouer_section(&s);
 		
 
-}
+}*/
 
 
 // simplification de grille remplir pour une seule case
-/*void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
     
     Grille_remplir_couleur(g, section->x, section->y, s->couleur);
 
-}*/
+}
