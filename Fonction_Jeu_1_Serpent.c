@@ -56,7 +56,6 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
     }
 
 
-    Grille_desallouer(&g);
     endwin(); // Termine la session ncurses
     
     printf("Game over\n");
