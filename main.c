@@ -9,25 +9,24 @@
 
 
 int main(int argc, char **  argv) {
-		
 	
+		
+	struct Grille * g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
+	
+	struct Serpent * serp = creer_serpent(int n, int m);
+
+
 	if (argc != 5) {
 		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (4)\n");
 		exit(1);
 	}
 	
-	
 
-	
 	if ((g->n < 0) || (g->m<0)) {
 		fprintf(stderr, "Un des arguments est négatif\n");
 		exit(1);
 	}
 
-
-	struct Grille * g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
-	
-	struct Serpent * serp = creer_serpent(width, height);
 
 
   	/* Initialisation de ncurses et du clavier(4 lignes)*/
@@ -46,7 +45,7 @@ int main(int argc, char **  argv) {
 	Jouer_Serpent(g, serp);
 
 	Grille_remplir_serp(g, serp);
-	
+
     	Grille_redessiner(g);
 
     	refresh();
