@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ncurses.h>
-#include "Fonction_Jeu.h"
 #include "Grille.h"
 #include "Serpent.h"
 #include "liste_Section.h"
