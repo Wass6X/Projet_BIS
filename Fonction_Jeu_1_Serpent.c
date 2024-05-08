@@ -54,6 +54,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
         Grille_remplir_serp(g, serp);  // Dessine le serpent
         Grille_redessiner(g);
+        mvprintw(0, 0, "Serpent position: x=%d, y=%d", serp->cordx, serp->cordy);
         refresh();
 
     }
