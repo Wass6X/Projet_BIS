@@ -22,12 +22,12 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
 
 
-    // initialisation du la grille
+    // initialisation de la grille
     Grille_tirage_fruit(g);
     Grille_vider(g);
     Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
     Grille_remplir_serp(g, serp);  // Dessine le serpent
-   	Grille_redessiner(g);
+    Grille_redessiner(g);
     refresh();
     
     while ((ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
@@ -54,7 +54,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         // Vérifier la collision avec le fruit
         if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
             int longueur = (rand() % 5) + 1;  // Longueur aléatoire entre 1 et 5
-            int couleur = (rand() % (47 - 41 + 1)) + 41;  // Couleur aléatoire entre 41 et 47
+            int couleur = (rand() % 6) + 41;  // Couleur aléatoire entre 41 et 47
             ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
             Grille_tirage_fruit(g);  // Générer un nouveau fruit
         }
