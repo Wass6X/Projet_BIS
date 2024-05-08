@@ -161,6 +161,6 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 // simplification de grille remplir pour une seule case
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
     
-    Grille_remplir_couleur(g, section->x, section->y, 45);
+    Grille_remplir_couleur(g, serp->cordx, serp->cordy, 45);
 
 }
