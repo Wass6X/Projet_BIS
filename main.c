@@ -29,7 +29,14 @@ int main(int argc, char **  argv) {
 
 
 	int delai = atoi(argv[3]);
+	
 
+	// initialisation du la grille
+    	Grille_tirage_fruit(g);
+    	Grille_vider(g);
+    	Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
+    	Grille_remplir_serp(g, serp);  // Dessine le serpent
+   	Grille_redessiner(g);
 
 	Jouer_Serpent(g, serp, delai);
 
