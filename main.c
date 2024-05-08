@@ -4,7 +4,7 @@
 #include "Grille.h"
 #include "Serpent.h"
 #include "liste_Section.h"
-#include "Fonction_jeu.h"
+#include "Fonction_Jeu.h"
 
 
 
