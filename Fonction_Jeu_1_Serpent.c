@@ -44,7 +44,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
     }
 
     endwin(); // Termine la session ncurses
-    Grille_deallouer(&g);
+    Grille_desallouer(&g);
 
 
     if (!gameRunning) {
