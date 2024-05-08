@@ -16,7 +16,7 @@ struct Serpent * creer_serpent(int n, int m) {
 	return serp;
 }
 
-struct Case * creer_case(enum sens) {
+struct Case * creer_case(enum Direction sens) {
 	
 	struct Case * c = malloc(sizeof(struct Case));
 	
