@@ -159,6 +159,7 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
     
     struct Section * s;
+    s = extraire_section(serp->chaine);
 
 
     if (serp == NULL || g == NULL) return;
@@ -166,5 +167,5 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
     if (serp->cordx >= 0 && serp->cordx < g->n && serp->cordy >= 0 && serp->cordy < g->m) {
         Grille_remplir_couleur(g, serp->cordx, serp->cordy, s->couleur);
     }
-    
+
 }
