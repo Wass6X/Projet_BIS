@@ -55,7 +55,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
             int longueur = (rand() % 5) + 1;  // Longueur aléatoire entre 1 et 5
             int couleur = (rand() % (47 - 41 + 1)) + 41;  // Couleur aléatoire entre 41 et 47
-            ajout_fin_liste(serp->chaine, creer_section(1, 45));
+            ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
             Grille_tirage_fruit(g);  // Générer un nouveau fruit
         }
 
