@@ -9,11 +9,11 @@
 
 
 int main(int argc, char **  argv) {
-	
+
 		
 	struct Grille * g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
 	
-	struct Serpent * serp = creer_serpent(int n, int m);
+	struct Serpent * serp = creer_serpent(g->n, g->m);
 
 
 	if (argc != 5) {
