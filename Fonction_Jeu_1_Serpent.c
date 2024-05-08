@@ -11,7 +11,6 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
     int ch;
     
-    struct Serpent * serp = creer_serpent(g->n, g->m);
 
     /* Initialisation de ncurses et du clavier*/
     initscr();
@@ -21,8 +20,15 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
     curs_set(0);
     halfdelay(delai);
 
+    // initialisation du la grille
+    Grille_tirage_fruit(g);
+    Grille_vider(g);
+    Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
+    Grille_remplir_serp(g, serp);  // Dessine le serpent
+    Grille_redessiner(g);
 
-    while (ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
+
+    while ((ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
         switch (ch) {
             case KEY_UP:
                 serp->cordx--;
@@ -38,7 +44,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 break;
         }
 
-        if (serpent_x < 0 || serpent_x >= largeur || serpent_y < 0 || serpent_y >= hauteur) {
+        if (serp->cordx < 0 || serp->cordx >= g->n || serp->cordy < 0 || serp->cordy >= g->m) {
             break;  // Le serpent a heurté un bord
         }
 

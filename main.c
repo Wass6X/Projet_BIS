@@ -44,6 +44,8 @@ int main(int argc, char **  argv) {
 
 	Jouer_Serpent(g, serp, delai);
 
+	Grille_desallouer(&g);
+
 	printf("\n\nAu revoir !\n");
 
 	
