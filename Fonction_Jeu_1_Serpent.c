@@ -38,6 +38,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
             Grille_remplir_serp(g, serp); // Met à jour la grille avec la nouvelle position du serpent
             Grille_redessiner(g); // Redessine la grille
         }
+        
+        fflush(stdout);
     }
 
     endwin(); // Termine la session ncurses
