@@ -14,6 +14,8 @@ int main(int argc, char **  argv) {
 	struct Grille * g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
 	
 	struct Serpent * serp = creer_serpent(g->n, g->m);
+	
+	int delai;
 
 
 	if (argc != 4) {
@@ -28,10 +30,11 @@ int main(int argc, char **  argv) {
 	}
 
 
-	int delai = atoi(argv[3]);
+	delai = atoi(argv[3]);
 
 
 	Jouer_Serpent(g, serp, delai);
+
 
 	Grille_desallouer(&g);
 
@@ -40,4 +43,5 @@ int main(int argc, char **  argv) {
 
 	
 	return EXIT_SUCCESS;
+	
 }
