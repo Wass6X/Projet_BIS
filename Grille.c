@@ -127,9 +127,9 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 	
 	struct Section * s;
 	
-	serp = creer_serpent(int n, int m);
+	serp = creer_serpent(g->n, int g->m);
 
-	
+
 	if (g == NULL || serp == NULL || est_vide(serp->chaine))
         	return;
 	
