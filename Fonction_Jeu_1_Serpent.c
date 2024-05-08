@@ -11,7 +11,6 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
 
     int ch;
     
-    Grille_redessiner(g);
 
     bool gameRunning = true;
 
