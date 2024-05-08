@@ -42,7 +42,6 @@ int main(int argc, char **  argv) {
 
 	Grille_remplir_rouge(g, g->cordx, g->cordy);
 
-	Jouer_Serpent(g, serp);
 
 	Grille_remplir_serp(g, serp);
 
