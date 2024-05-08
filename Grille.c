@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Grille.h"
 #include "Serpent.h"
-#include "Liste_Section.h"
+#include "liste_Section.h"
 
 struct Grille * Grille_allouer(int n, int m){
         

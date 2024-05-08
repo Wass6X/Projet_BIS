@@ -4,7 +4,7 @@
 #include"Fonction_Jeu.h"
 #include"Grille.h"
 #include "Serpent.h"
-#include"Liste_Section.h"
+#include"liste_Section.h"
 
 
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
