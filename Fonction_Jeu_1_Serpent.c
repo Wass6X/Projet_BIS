@@ -10,10 +10,7 @@
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
 
     int ch;
-    
-    Grille_remplir_serp(g, serp);
-    Grille_redessiner(g);
-    refresh();
+
 
     bool gameRunning = true;
 
@@ -47,6 +44,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
     }
 
     endwin(); // Termine la session ncurses
+    Grille_deallouer(&g);
+
 
     if (!gameRunning) {
         printf("Game over: Le serpent a heurté un bord!\n");
