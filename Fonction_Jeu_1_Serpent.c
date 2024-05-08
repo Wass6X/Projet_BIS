@@ -11,6 +11,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
 
     int ch;
     
+    Grille_remplir_serp(g, serp);
+    Grille_redessiner(g);
+    refresh();
 
     bool gameRunning = true;
 
@@ -37,8 +40,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
         if (gameRunning) {  
             Grille_remplir_serp(g, serp); // Met à jour la grille avec la nouvelle position du serpent
             Grille_redessiner(g); // Redessine la grille
+            refresh();
         }
-        
+
         fflush(stdout);
     }
 

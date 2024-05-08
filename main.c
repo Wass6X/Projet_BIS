@@ -45,13 +45,8 @@ int main(int argc, char **  argv) {
 	
 	serp = creer_serpent(g->n, g->m);
 	
-	Grille_remplir_serp(g, serp);
-	
-	Grille_redessiner(g);
-
 	Jouer_Serpent(g, serp);
 	
-
 	printf("\n\nAu revoir !\n");
 	
 	return EXIT_SUCCESS;
