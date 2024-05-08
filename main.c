@@ -31,21 +31,9 @@ int main(int argc, char **  argv) {
 	int delai = atoi(argv[3]);
 
 
-	
-	Grille_tirage_fruit(g);
-
-	Grille_vider(g);
-
-	Grille_remplir_rouge(g, g->cordx, g->cordy);
-
-	Grille_remplir_serp(g, serp);
-
-    	Grille_redessiner(g);
-
 	Jouer_Serpent(g, serp, delai);
 
-	Grille_desallouer(&g);
-
+	
 	printf("\n\nAu revoir !\n");
 
 	
