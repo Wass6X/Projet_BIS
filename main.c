@@ -4,6 +4,7 @@
 #include "Grille.h"
 #include "Serpent.h"
 #include "liste_Section.h"
+#include "Fonction_jeu.h"
 
 
 
@@ -27,21 +28,21 @@ int main(int argc, char **  argv) {
 	}
 
 
+	int delai = atoi(argv[3]);
 
-  	/* Initialisation de ncurses et du clavier(4 lignes)*/
-  	
 
 	
 	Grille_tirage_fruit(g);
 
 	Grille_vider(g);
-	
+
 	Grille_remplir_rouge(g, g->cordx, g->cordy);
 
 	Grille_remplir_serp(g, serp);
 
     	Grille_redessiner(g);
 
+	Jouer_Serpent(g, serp, delai);
 
 	printf("\n\nAu revoir !\n");
 

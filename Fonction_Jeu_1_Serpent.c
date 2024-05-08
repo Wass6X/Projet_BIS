@@ -3,52 +3,56 @@
 #include<ncurses.h>
 #include"Fonction_Jeu.h"
 #include"Grille.h"
-#include "Serpent.h"
+#include"Serpent.h"
 #include"liste_Section.h"
 
 
-void Jouer_Serpent(struct Grille *g, struct Serpent *serp){
+void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
     int ch;
+    
+    struct Serpent * serp = creer_serpent(g->n, g->m);
+
+    /* Initialisation de ncurses et du clavier*/
+    initscr();
+    raw();
+    keypad(stdscr, TRUE);
+    noecho();
+    curs_set(0);
+    halfdelay(delai);
 
 
-    bool gameRunning = true;
-
-    while (gameRunning && (ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
+    while (ch = getch()) != '#') { // Continue jusqu'à ce que l'utilisateur appuie sur '#'
         switch (ch) {
             case KEY_UP:
-                if (serp->cordx == 0) gameRunning = false; // Stoppe le jeu si on touche un bord
-                else serp->cordx--;
+                serp->cordx--;
                 break;
             case KEY_DOWN:
-                if (serp->cordx == g->n - 1) gameRunning = false;
-                else serp->cordx++;
+                serp->cordx++;
                 break;
             case KEY_LEFT:
-                if (serp->cordy == 0) gameRunning = false;
-                else serp->cordy--;
+                serp->cordy--;
                 break;
             case KEY_RIGHT:
-                if (serp->cordy == g->m - 1) gameRunning = false;
-                else serp->cordy++;
+                serp->cordy++;
                 break;
         }
 
-        if (gameRunning) {  
-            Grille_remplir_serp(g, serp); // Met à jour la grille avec la nouvelle position du serpent
-            Grille_redessiner(g); // Redessine la grille
-            refresh();
+        if (serpent_x < 0 || serpent_x >= largeur || serpent_y < 0 || serpent_y >= hauteur) {
+            break;  // Le serpent a heurté un bord
         }
 
-        fflush(stdout);
+        Grille_vider(g);
+        Grille_remplir_rouge(g, g->cordx, g->cordy);  // Dessine le fruit
+        Grille_remplir_serp(g, serp);  // Dessine le serpent
+        Grille_redessiner(g);
+
     }
 
-    endwin(); // Termine la session ncurses
+
     Grille_desallouer(&g);
-
-
-    if (!gameRunning) {
-        printf("Game over: Le serpent a heurté un bord!\n");
-    }
+    endwin(); // Termine la session ncurses
+    
+    printf("Game over\n");
 
 }
