@@ -15,8 +15,8 @@ int main(int argc, char **  argv) {
 	struct Serpent * serp = creer_serpent(g->n, g->m);
 
 
-	if (argc != 5) {
-		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (4)\n");
+	if (argc != 3) {
+		fprintf(stderr, "Veuillez entrer le bon nombre d'argumets (2)\n");
 		exit(1);
 	}
 	
