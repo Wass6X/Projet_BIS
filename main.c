@@ -37,7 +37,6 @@ int main(int argc, char **  argv) {
 
 	Grille_remplir_rouge(g, g->cordx, g->cordy);
 
-
 	Grille_remplir_serp(g, serp);
 
     	Grille_redessiner(g);
