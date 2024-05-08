@@ -30,12 +30,7 @@ int main(int argc, char **  argv) {
 
 
   	/* Initialisation de ncurses et du clavier(4 lignes)*/
-  	initscr();
-	raw();            
-    	noecho();             
-    	keypad(stdscr, TRUE); 
-
-	halfdelay(atoi(argv[3]));
+  	
 
 	
 	Grille_tirage_fruit(g);
@@ -47,7 +42,6 @@ int main(int argc, char **  argv) {
 
     	Grille_redessiner(g);
 
-    	refresh();
 
 	printf("\n\nAu revoir !\n");
 
