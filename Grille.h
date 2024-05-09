@@ -14,12 +14,15 @@ struct Grille {
 
 	
 /*Déclaration des fonctions pour Grille.c*/
+
+
 struct Grille * Grille_allouer(int n, int m);
 
 void Grille_vider(struct Grille * g);
 
 void Grille_tirage_fruit(struct Grille * g);
 
+/* Fontion permerttant d'afficher le fruit */
 void Grille_remplir_rouge(struct Grille * g, int x, int y);
 
 void Grille_desallouer(struct Grille ** g);
