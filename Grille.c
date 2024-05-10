@@ -112,7 +112,7 @@ void Grille_redessiner(struct Grille *g){
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
-	if (couleur>39 && couleur<48 && x<g->n && y<g->m){
+	if (couleur>39 && couleur<48){
 		snprintf(g->tab[x][y], 8, "\033[%dm  ", couleur);
 	}
 }
@@ -122,6 +122,9 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 	
 	int j;
         
+        Grille_remplir_couleur(g, serp->cordx, serp->cordy, 44);
+        
+        /* 
         struct Section * s = serp->chaine->premier;
         struct Case * c = serp->mouvement->premier;
 
@@ -162,5 +165,7 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
                
         desalouer_section(&s);
         desalouer_case(&c);
+        
+       	*/
 
 }

@@ -31,6 +31,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_tirage_fruit(g);
         Grille_vider(g);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
+        printf("%d", serp->cordx);
         Grille_remplir_serp(g, serp);  
         Grille_redessiner(g);
         refresh();
