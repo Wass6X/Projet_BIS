@@ -3,8 +3,6 @@
 #include <time.h>
 #include <string.h>
 #include "Grille.h"
-#include "Serpent.h"
-#include "liste_Section.h"
 
 struct Grille * Grille_allouer(int n, int m){
         
@@ -114,53 +112,55 @@ void Grille_redessiner(struct Grille *g){
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
-	if (couleur>39 && couleur<48){
+	if (couleur>39 && couleur<48 && x<g->n && y<g->m){
 		snprintf(g->tab[x][y], 8, "\033[%dm  ", couleur);
 	}
 }
 
 
-/*void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
-	
-	int i=0, j;
-	int stop = 0;
-	
-	struct Section * s;
-	
-	serp = creer_serpent(g->n, g->m);
-
-
-	if (g == NULL || serp == NULL || est_vide(serp->chaine))
-        	return;
-	
-
-	while(!(est_vide(serp->chaine)) && !(stop)) {
-		
-		s = extraire_section(serp->chaine);
-		
-		for(j=0; (j<s->taille) && !(stop); j++) {
-		
-			if (serp->cordy+i < g->m){	
-				Grille_remplir_couleur(g, serp->cordx, serp->cordy + i, s->couleur);			
-				i++;	
-			}
-			
-			else
-				stop=1;
-			
-		}
-			
-	}
-	
-	desalouer_section(&s);
-		
-
-}*/
-
-
-/* simplification de grille_remplir pour une seule case */
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
-    
-	Grille_remplir_couleur(g, serp->cordx, serp->cordy, 45);
+	
+	int j;
+        
+        struct Section * s = serp->chaine->premier;
+        struct Case * c = serp->mouvement->premier;
+
+        if (g == NULL || serp == NULL || est_vide(serp->chaine) || est_vide_lm(serp->mouvement))
+                return;
+	
+	Grille_remplir_couleur(g, c->cordx, c->cordy, s->couleur);
+	
+        while (s != NULL) {
+
+                switch (c->sens) {
+                                
+			case HAUT:
+				for (j = 0; j < s->taille; j++) 
+					Grille_remplir_couleur(g, c->cordx - j, c->cordy, s->couleur);        
+                                break;
+                                
+                       	case BAS:
+                       		for (j = 0; j < s->taille; j++) 
+					Grille_remplir_couleur(g, c->cordx + j, c->cordy, s->couleur);        
+                                break;
+                       	
+                        case GAUCHE:
+                                for (j = 0; j < s->taille; j++) 
+					Grille_remplir_couleur(g, c->cordx, c->cordy - j, s->couleur);        
+                                break;
+                              
+                        case DROITE:
+                        	for (j = 0; j < s->taille; j++) 
+					Grille_remplir_couleur(g, c->cordx, c->cordy + j, s->couleur);        
+                                break;
+		}
+		
+		s = s->suivant;
+		c = c->suivant;
+                        
+	}
+               
+        desalouer_section(&s);
+        desalouer_case(&c);
 
 }

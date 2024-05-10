@@ -9,13 +9,12 @@
 
 
 int main(int argc, char **  argv) {
-
 	
-	struct Grille * g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
+	int delai;	
 	
-	struct Serpent * serp = creer_serpent(g->n, g->m);
+	struct Grille * g;
 	
-	int delai;
+	struct Serpent * serp;
 
 
 	if (argc != 4) {
@@ -23,12 +22,14 @@ int main(int argc, char **  argv) {
 		exit(1);
 	}
 	
+	g = Grille_allouer(atoi(argv[1]), atoi(argv[2]));
 
 	if ((g->n < 0) || (g->m<0)) {
 		fprintf(stderr, "Un des arguments est négatif\n");
 		exit(1);
 	}
 
+	serp = creer_serpent(g->n, g->m);
 
 	delai = atoi(argv[3]);
 
