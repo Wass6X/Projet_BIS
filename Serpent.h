@@ -2,20 +2,8 @@
 #define SERPENT_H
 
 #include "liste_Section.h"
+#include "liste_Mouvement.h"
 
-
-enum Direction { HAUT, BAS, GAUCHE, DROITE };
-
-struct Case {
-	enum Direction sens;
-	struct Case * suivant;
-};
-
-struct Liste_Mouvement {
-	struct Case * premier;
-	struct Case * dernier;
-	int longueur;		
-};
 
 struct Serpent {
 	
@@ -30,10 +18,6 @@ struct Serpent {
 
 /* Fonction permertant d'alouer un espace pour le serpent et qui prend en entrée les dimensions de la grille */
 struct Serpent * creer_serpent(int n, int m);
-
-struct Case * creer_case(enum Direction sens);
-
-struct Liste_Mouvement * creer_liste_mouvement();
 
 
 #endif
