@@ -125,14 +125,16 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
         int i;        
        
        struct Section * s = serp->chaine->premier;
+       struct Case * c = serp->mouvement->premier;
        
         if (g == NULL || serp == NULL || est_vide(serp->chaine))
                 return;
 	
 	Grille_remplir_couleur(g, serp->cordx, serp->cordy, s->couleur);	
 
-
-        /* while (s != NULL) {
+	
+	/*
+        while (s != NULL) {
         
                 switch (sens) {
                                 
@@ -161,7 +163,7 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 		c = c->suivant;
                         
 	}
-	*/
-	s=NULL;
+	
+	*/	
 
 }

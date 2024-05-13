@@ -37,20 +37,28 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 
                 switch (ch) {
                     case KEY_UP:
-                        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, HAUT));  
-                        sens = HAUT;                      
+			if (sens != HAUT) {
+				ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, HAUT));  
+				sens = HAUT;
+			}
                         break;
                     case KEY_DOWN:
-                        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, BAS));     
-                        sens = BAS;                   
+                        if (sens != BAS) {
+                        	ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, BAS));     
+                       		sens = BAS;                   
+                        }
                         break;
                     case KEY_LEFT:
-                        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, GAUCHE));           
-                        sens = GAUCHE;             
+             		if (sens != GAUCHE) {
+             		        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, GAUCHE));           
+                        	sens = GAUCHE;             
+                        }
                         break;
                     case KEY_RIGHT:
-                        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, DROITE));                        
-                    	sens = DROITE;    
+			if (sens != DROITE) {
+                        	ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, DROITE));                        
+                    		sens = DROITE;    
+                        }
                         break;
                 }
 		
