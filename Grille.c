@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include "Grille.h"
+#include "liste_Mouvement.h"
 
 struct Grille * Grille_allouer(int n, int m){
         
@@ -118,24 +119,22 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 }
 
 
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
-	
-	int j;
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction sens) {
         
-        Grille_remplir_couleur(g, serp->cordx, serp->cordy, 44);
         
-        /* 
-        struct Section * s = serp->chaine->premier;
-        struct Case * c = serp->mouvement->premier;
-
-        if (g == NULL || serp == NULL || est_vide(serp->chaine) || est_vide_lm(serp->mouvement))
+        int i;        
+       
+       struct Section * s = serp->chaine->premier;
+       
+        if (g == NULL || serp == NULL || est_vide(serp->chaine))
                 return;
 	
-	Grille_remplir_couleur(g, c->cordx, c->cordy, s->couleur);
-	
-        while (s != NULL) {
+	Grille_remplir_couleur(g, serp->cordx, serp->cordy, s->couleur);	
 
-                switch (c->sens) {
+
+        /* while (s != NULL) {
+        
+                switch (sens) {
                                 
 			case HAUT:
 				for (j = 0; j < s->taille; j++) 
@@ -162,10 +161,7 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp) {
 		c = c->suivant;
                         
 	}
-               
-        desalouer_section(&s);
-        desalouer_case(&c);
-        
-       	*/
+	*/
+	s=NULL;
 
 }

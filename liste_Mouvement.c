@@ -10,6 +10,7 @@ struct Case * creer_case(int cordx, int cordy, enum Direction sens) {
 	c->cordx = cordx;
 	c->cordy = cordy;
 	c->sens = sens;
+	
 	c->suivant = NULL;
 	
 	return c;
