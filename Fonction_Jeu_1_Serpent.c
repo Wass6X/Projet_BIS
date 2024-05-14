@@ -9,7 +9,7 @@
 #include"liste_Mouvement.h"
 
 
-void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
+void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum element **M){
 
         int ch;
 
@@ -31,7 +31,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_tirage_fruit(g);
         Grille_vider(g);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
-        Grille_remplir_serp(g, serp, &sens);  
+        Grille_remplir_serp(g, serp, &sens, M);  
         Grille_redessiner(g);
         
     	printf("\nVotre score: %d\n", score);
@@ -103,7 +103,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 		
                 Grille_vider(g);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-                Grille_remplir_serp(g, serp, &sens);
+                Grille_remplir_serp(g, serp, &sens, M);
                 Grille_redessiner(g);	
                
     		printf("\nVotre score: %d\n", score);
@@ -119,19 +119,5 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         
 	printf("Votre score final est de: %d", score);
 
-}
-
-
-void initialiser_mat(int n, int m){
-        enum element **M = malloc(n * sizeof(enum element *));
-
-        int i,j;
-
-        for(i=0; i<=n; i++){
-                M[i] = malloc(m * sizeof(enum element));
-                for (int j = 0; j < m; j++) {
-                        M[i][j] = Rien;
-                }
-        }
 }
 

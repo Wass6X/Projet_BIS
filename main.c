@@ -33,16 +33,16 @@ int main(int argc, char **  argv) {
 
 	delai = atoi(argv[3]);
 
+	enum element **M = initialiser_mat(g->n, g->m);
 
-	Jouer_Serpent(g, serp, delai);
 
+	Jouer_Serpent(g, serp, delai, M);
 
 	Grille_desallouer(&g);
 
-
 	printf("\n\nAu revoir !\n");
 
-	
+
 	return EXIT_SUCCESS;
 	
 }

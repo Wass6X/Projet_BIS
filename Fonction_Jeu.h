@@ -5,11 +5,6 @@
 #include "Serpent.h"
 
 
-void Jouer_Serpent(struct Grille * g, struct Serpent * serp, int delai);
-
-
-enum element {Rien, Fruit, Corp_serp};
-
-void initialiser_mat(int n, int m);
+void Jouer_Serpent(struct Grille * g, struct Serpent * serp, int delai, enum element **M);
 
 #endif
