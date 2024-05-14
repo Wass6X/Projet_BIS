@@ -118,11 +118,13 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	}
 }
 
-
+	
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction sens) {
         
         
-        int i, x=serp->cordx, y=serp->cordy;        
+        int i, x=serp->cordx, y=serp->cordy;
+        
+        enum Direction tmp_sens;        
        
        struct Section * s = serp->chaine->premier;
        struct Case * c = serp->mouvement->premier;
@@ -134,13 +136,13 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 		for (i = 0; i < s->taille; i++) {	
 	        	
 	        	if (c!=NULL && x==c->cordx && y==c->cordy) {
-	        		sens = c->sens;
+	        		tmp_sens = c->sens;
 	        		c = c->suivant;
 	        	}
 	        	
 			Grille_remplir_couleur(g, x, y, s->couleur);       
 	        	
-			switch (sens) {
+			switch (tmp_sens) {
                               
 				case HAUT:
 					y++;
@@ -159,11 +161,9 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 					break;
 			}
 		
-		
 		}
-		
 		s = s->suivant;
-                        
+                tmp_sens = sens;       
 	}
 	
 }
