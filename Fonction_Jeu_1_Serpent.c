@@ -98,6 +98,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 			
 			score++;	
                 }
+
+                /* Vérifier la collision du serpent avec lui-même */
 		
                 Grille_vider(g);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
