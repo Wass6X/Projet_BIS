@@ -24,14 +24,13 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         halfdelay(delai);
 
 
-
         /* initialisation de la grille */
         Grille_tirage_fruit(g);
         Grille_vider(g);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
         Grille_remplir_serp(g, serp, sens);  
         Grille_redessiner(g);
-        
+        refresh();
          
         while ((ch = getch()) != '#') {
                 
@@ -98,7 +97,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
                 Grille_remplir_serp(g, serp, sens);
                 Grille_redessiner(g);	
-
+                refresh();
         }
 
 
