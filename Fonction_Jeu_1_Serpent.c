@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <string.h>
 #include<ncurses.h>
 #include"Fonction_Jeu.h"
 #include"Grille.h"
@@ -80,10 +81,6 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 				serp->cordx--;
                        		break;
 		}
-		
-                /* Vérifier la collision avec le bord */
-                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) 
-                        break;  
                 
 
                 /* Vérifier la collision avec le fruit */
@@ -100,7 +97,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 }
 
                 /* Vérifier la collision du serpent avec lui-même */
-                if(strcmp(g->tab[serp->cordy][serp->cordx], "\033[40m  "))
+                if (!strcmp(g->tab[serp->cordy][serp->cordx], "\033[40m  "))
                         break;
                 
 		
