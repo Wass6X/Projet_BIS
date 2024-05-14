@@ -47,15 +47,15 @@ void Grille_tirage_fruit(struct Grille *g){
        
        srand(time(NULL));
        
-        g->cordx = rand() % g->n;
-        g->cordy = rand() % g->m;
+        g->cordx = rand() % g->m;
+        g->cordy = rand() % g->n;
         
 }
 
 
 
 void Grille_remplir_rouge(struct Grille * g, int x, int y) {
-	strcpy(g->tab[x][y], "\033[101m  ");	
+	strcpy(g->tab[y][x], "\033[101m  ");	
 }
 
 
@@ -113,7 +113,7 @@ void Grille_redessiner(struct Grille *g){
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
-	if (couleur>39 && couleur<48 && x > 0 && x<g->n && y > 0 &&y<g->m){
+	if (couleur>39 && couleur<48 && x >= 0 && x<g->n && y >= 0 &&y<g->m){
 		snprintf(g->tab[y][x], 8, "\033[%dm  ", couleur);
 	}
 }
@@ -130,7 +130,6 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
         if (g == NULL || serp == NULL || est_vide(serp->chaine))
                 return;
 	
-	
         while (s != NULL) {
 		for (i = 0; i < s->taille; i++) {	
 	        	
@@ -144,19 +143,19 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 			switch (sens) {
                               
 				case HAUT:
-					y--;
+					y++;
 					break;
                                 
 				case BAS:
-					y++;
+					y--;
 					break;
 				
 				case GAUCHE:
-					x--;
+					x++;
 					break;
 				
 				case DROITE:
-					y++;
+					x--;
 					break;
 			}
 		

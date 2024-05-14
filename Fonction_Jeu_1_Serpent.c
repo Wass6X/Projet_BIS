@@ -83,13 +83,13 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
                 /* Vérifier la collision avec le fruit */
                 if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
-                
-                    longueur = (rand() % 5) + 1;
-                    couleur = (rand() % 6) + 41;
+                	
+			longueur = (rand() % 2) + 1;
+			couleur = (rand() % 6) + 41;
                     
-                    ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
-                    
-                    Grille_tirage_fruit(g);  
+                    	ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
+                    	
+                    	Grille_tirage_fruit(g);  
 			
                 }
 		

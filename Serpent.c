@@ -10,7 +10,7 @@ struct Serpent * creer_serpent(int n, int m) {
 	serp->cordy = (m/2);
     
 	serp->chaine = creer_liste();
-	ajout_debut_liste(serp->chaine, creer_section(1, 45));
+	ajout_debut_liste(serp->chaine, creer_section(1, 41));
 	
 	serp->mouvement = creer_liste_mouvement();
     
