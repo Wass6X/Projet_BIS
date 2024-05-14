@@ -1,7 +1,7 @@
 #ifndef LISTE_MOUVEMENT_H
 #define LISTE_MOUVEMENT_H
 
-enum Direction { HAUT, BAS, GAUCHE, DROITE };
+enum Direction { HAUT, BAS, GAUCHE, DROITE, NEUTRE};
 
 struct Case {
 	int cordx;

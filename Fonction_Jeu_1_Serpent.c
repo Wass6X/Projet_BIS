@@ -12,7 +12,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
         int ch;
 
-	enum Direction sens=DROITE;
+	enum Direction sens=NEUTRE;
 	
         int couleur, longueur;  
 	
