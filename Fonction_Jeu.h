@@ -8,6 +8,8 @@
 void Jouer_Serpent(struct Grille * g, struct Serpent * serp, int delai);
 
 
-enum element {Rien, Fruit, CorpSerp};
+enum element {Rien, Fruit, Corp_serp};
+
+void initialiser_mat(int n, int m);
 
 #endif

@@ -121,3 +121,17 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
 }
 
+
+void initialiser_mat(int n, int m){
+        enum element **M = malloc(n * sizeof(enum element *));
+
+        int i,j;
+
+        for(i=0; i<=n; i++){
+                M[i] = malloc(m * sizeof(enum element));
+                for (int j = 0; j < m; j++) {
+                        M[i][j] = Rien;
+                }
+        }
+}
+
