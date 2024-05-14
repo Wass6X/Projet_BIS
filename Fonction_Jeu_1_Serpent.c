@@ -12,6 +12,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
         int ch;
 
+	int score=0;	
+	
 	enum Direction sens=NEUTRE;
 	
         int couleur, longueur;  
@@ -30,6 +32,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
         Grille_remplir_serp(g, serp, sens);  
         Grille_redessiner(g);
+        
+    	printf("\nVotre score: %d\n", score);
+        
         refresh();
          
         while ((ch = getch()) != '#') {
@@ -77,7 +82,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 		}
 		
                 /* Vérifier la collision avec le bord */
-                if (serp->cordx < 0 || serp->cordx >= g->n || serp->cordy < 0 || serp->cordy >= g->m) {
+                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) {
                     break;  
                 }
 
@@ -91,12 +96,16 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                     	
                     	Grille_tirage_fruit(g);  
 			
+			score++;	
                 }
 		
                 Grille_vider(g);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
                 Grille_remplir_serp(g, serp, sens);
                 Grille_redessiner(g);	
+               
+    		printf("\nVotre score: %d\n", score);
+                
                 refresh();
         }
 
@@ -105,6 +114,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         endwin(); 
         
         printf("Game over\n");
+        
+	printf("Votre score final est de: %d", score);
 
 }
 
