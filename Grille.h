@@ -32,6 +32,6 @@ void Grille_redessiner(struct Grille *g);
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);
 
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction sens);
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens);
 
 #endif

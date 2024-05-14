@@ -12,7 +12,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
         int ch;
 
-	int score=0;	
+	int score=0;
 	
 	enum Direction sens=NEUTRE;
 	
@@ -30,7 +30,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
         Grille_tirage_fruit(g);
         Grille_vider(g);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
-        Grille_remplir_serp(g, serp, sens);  
+        Grille_remplir_serp(g, serp, &sens);  
         Grille_redessiner(g);
         
     	printf("\nVotre score: %d\n", score);
@@ -106,7 +106,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 		
                 Grille_vider(g);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-                Grille_remplir_serp(g, serp, sens);
+                Grille_remplir_serp(g, serp, &sens);
                 Grille_redessiner(g);	
                
     		printf("\nVotre score: %d\n", score);
