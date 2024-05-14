@@ -82,9 +82,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 		}
 		
                 /* Vérifier la collision avec le bord */
-                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) {
+                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) 
                         break;  
-                }
+                
 
                 /* Vérifier la collision avec le fruit */
                 if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
@@ -100,9 +100,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
                 }
 
                 /* Vérifier la collision du serpent avec lui-même */
-                if(strcmp(g->tab[serp->cordy][serp->cordx], "\033[40m  ")){
+                if(strcmp(g->tab[serp->cordy][serp->cordx], "\033[40m  "))
                         break;
-                }
+                
 		
                 Grille_vider(g);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
