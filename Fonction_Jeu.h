@@ -7,4 +7,7 @@
 
 void Jouer_Serpent(struct Grille * g, struct Serpent * serp, int delai);
 
+
+enum element {Rien, Fruit, CorpSerp};
+
 #endif
