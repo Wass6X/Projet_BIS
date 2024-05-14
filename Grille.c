@@ -114,7 +114,7 @@ void Grille_redessiner(struct Grille *g){
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>39 && couleur<48){
-		snprintf(g->tab[x][y], 8, "\033[%dm  ", couleur);
+		snprintf(g->tab[y][x], 8, "\033[%dm  ", couleur);
 	}
 }
 
