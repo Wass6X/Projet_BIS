@@ -17,27 +17,3 @@ struct Serpent * creer_serpent(int n, int m) {
 	return serp;
 }
 
-
-/*
-void update_liste_mouvement(struct Serpent * serp) {
-	
-	struct Case * c = serp->mouvement->premier;
-	
-		
-	c->cordx = serp->cordx;
-	c->cordy = serp->cordy;
-		
-	while(c->suivant != NULL) {
-		
-		c->suivant->cordx = c->cordx;	
-		c->suivant->cordy = c->cordy;	
-		c->suivant->sens = c->sens;
-		
-		c = c->suivant; 
-			
-	}
-	
-	c = NULL;
-	
-}
-*/
