@@ -17,6 +17,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 	
         int couleur, longueur;  
 	
+	int touche;
+	
         /* Initialisation de ncurses et du clavier */
         initscr();
         raw();
@@ -30,10 +32,12 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
         Grille_vider(g);
         reset_mat(M, g->n, g->m);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
-        Grille_remplir_serp(g, serp);  
+        Grille_remplir_serp(g, serp, M);  
         Grille_redessiner(g);
         
-    	printf("\nVotre score: %d\n", score);
+    	printf("Votre score: %d \033[1E", score);
+    	
+	printf("\033[0m\n");
         
         refresh();
          
@@ -104,10 +108,15 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 Grille_vider(g);
 		reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-                Grille_remplir_serp(g, serp);
+                touche = Grille_remplir_serp(g, serp, M);
+                
+                if(touche == 1){
+                	break;	
+                }
+                
                 Grille_redessiner(g);	
                
-    		printf("\nVotre score: %d\n", score);
+    		printf("\033[0m Votre score: %d \033[1E\033[0m\n", score);
                 
                 refresh();
         }

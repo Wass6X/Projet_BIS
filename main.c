@@ -33,9 +33,9 @@ int main(int argc, char **  argv) {
 
 	delai = atoi(argv[3]);
 	
-	enum element **M = initaliser_mat(g->n, g->m);
+	enum element **M = initialiser_mat(g->n, g->m);
 
-	Jouer_Serpent(g, serp, delai);
+	Jouer_Serpent(g, serp, delai, M);
 
 	Grille_desallouer(&g);
 

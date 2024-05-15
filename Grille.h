@@ -13,6 +13,11 @@ struct Grille {
 	int cordy;		/* Coordonnée y de la tête serpent sur la grille */
 };
 
+
+/* Enumération des différents éléments présents dans la matrice d'éléments */
+enum element {Rien, Fruit, Corp_serp};
+
+
 /*Déclarations des fonctions pour Grille.c*/
 struct Grille * Grille_allouer(int n, int m);				/* Alloue une nouvelle grille */
 
@@ -29,11 +34,8 @@ void Grille_redessiner(struct Grille *g);				/* Redessine la grille */
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);			/* Remplit une cellule de la grille avec une couleur spécifique */
 
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp);		/* Remplit la grille avec les éléments du serpent */
+int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element **M);		/* Remplit la grille avec les éléments du serpent */
 
-
-/* Enumération des différents éléments présents dans la matrice d'éléments */
-enum element {Rien, Fruit, Corp_serp};
 
 /* Initialisation d'une matrice d'éléments */
 enum element **initialiser_mat(int n, int m);
