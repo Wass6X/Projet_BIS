@@ -236,3 +236,69 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
 
 	return 0;
 }
+
+/* Fonction pour remplir la grille avec les éléments des deux serpent */	
+int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp, enum element **M) {
+        
+        int i, x=serp->cordx, y=serp->cordy;
+       
+       	struct Section * s = serp->chaine->premier;
+       	struct Case * c = serp->mouvement->premier;
+       
+        if (g == NULL || serp == NULL || est_vide(serp->chaine))
+                return 0;
+        
+        while (s != NULL) {
+		for (i = 0; i < s->taille; i++) {	
+	        	
+	        	
+			if (c->suivant!=NULL) {
+	        		if (c->cordx==x && c->cordy==y)
+					c = c->suivant;
+					
+	        	}
+	        	
+	        	
+			/* Vérifier la colliision avec lui-meme*/
+			if(M[y][x] == Corp_serp) {
+				return 1;
+			}else{
+				M[y][x] = Corp_serp;
+				
+				if (y==serp->cordy && x==serp->cordx)
+					sprintf(g->tab[serp->cordy][serp->cordx], "\033[41m<>");
+				
+				else
+					Grille_remplir_couleur(g, x, y, s->couleur);
+			}
+			
+	        	
+	        	switch (c->sens) {
+                              
+				case HAUT:
+					y++;
+					break;
+                                
+				case BAS:
+					y--;
+					break;
+				
+				case GAUCHE:
+					x++;
+					break;
+				
+				case DROITE:
+					x--;
+					break;
+				default:
+					break;	
+			}
+		
+		}
+		
+		s = s->suivant;
+	
+	}
+
+	return 0;
+}

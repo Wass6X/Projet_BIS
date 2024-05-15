@@ -19,4 +19,7 @@ struct Serpent {
 /* Fonction permertant d'alouer un espace pour le serpent et qui prend en entrée les dimensions de la grille */
 struct Serpent * creer_serpent(int n, int m);
 
+/* Fonction permertant d'alouer un espace pour le deuxieme sserpent et qui prend en entrée les dimensions de la grille */
+struct Serpent * creer_serpent_2(int n, int m);
+
 #endif
