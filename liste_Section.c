@@ -3,10 +3,13 @@
 #include "liste_Section.h"
 
 
+/* Fonction pour créer une nouvelle section */
 struct Section * creer_section(int taille, int couleur) {
 	
+	/* Allocation de mémoire pour la nouvelle section */
 	struct Section * s = malloc(sizeof(struct Section));
 	
+	/* Initialisation des champs de la section */
 	s->taille = taille;
 	s->couleur = couleur;
 	s->suivant = NULL;
@@ -15,6 +18,8 @@ struct Section * creer_section(int taille, int couleur) {
 
 }
 
+
+/* Fonction pour désallouer une section */
 void desalouer_section(struct Section ** s) {
 	
 	if (*s != NULL) {
