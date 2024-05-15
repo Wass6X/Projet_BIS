@@ -19,6 +19,7 @@ enum element {Rien, Fruit, Corp_serp};
 
 enum element **initialiser_mat(int n, int m);
 
+void reset_mat(enum element  **M, int n, int m);
 
 
 /*Déclaration des fonctions pour Grille.c*/

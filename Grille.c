@@ -81,6 +81,7 @@ void Grille_desallouer(struct Grille ** g) {
 	*g = NULL;
 }
 
+
 void Grille_redessiner(struct Grille *g){
 
 	int i,j;
@@ -111,6 +112,7 @@ void Grille_redessiner(struct Grille *g){
 
 }
 
+
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>40 && couleur<48 && x >= 0 && x<g->m && y >= 0 &&y<g->n){
@@ -134,6 +136,17 @@ enum element **initialiser_mat(int n, int m){
 
 }
 
+
+void reset_mat(enum element  **M, int n, int m) {
+    	int i,j;
+
+	for (i=0; i<n; i++) {
+        	for (j=0; j<m; j++) {
+            		M[i][j] = Rien;
+        	}
+    	}
+}
+
 	
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens, enum element **M) {
         
@@ -155,18 +168,20 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 	        		change = 1;
 	        	}
 
-	        	
+	        	/* Grille_remplir_couleur(g, x, y, s->couleur); */
+
 			/* Vérifier la collision avec lui-même */
-            		if (M[y][x] == Corp_serp) {
+			if (M[y][x] == Corp_serp) {
                 		printf("Collision détectée! Le jeu est terminé.\n");
                 		exit(EXIT_FAILURE);
             		}else{
                 		M[y][x] = Corp_serp; 
                			Grille_remplir_couleur(g, x, y, s->couleur);
-           		} 
+           		}
+			
+			
 
-	        	
-			switch (*sens) {
+	        	switch (*sens) {
                               
 				case HAUT:
 					y++;
@@ -185,9 +200,12 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 					break;
 					
 			}
+
 		
 		}
+
 		s = s->suivant;
+	
 	}
 	
 }

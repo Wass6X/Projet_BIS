@@ -19,7 +19,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 	
         int couleur, longueur;  
 	
-        /* Initialisation de ncurses et du clavier*/
+        /* Initialisation de ncurses et du clavier */
         initscr();
         raw();
         keypad(stdscr, TRUE);
@@ -30,6 +30,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
         /* initialisation de la grille */
         Grille_tirage_fruit(g);
         Grille_vider(g);
+        reset_mat(M, g->n, g->m);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
         Grille_remplir_serp(g, serp, &sens, M);  
         Grille_redessiner(g);
@@ -102,6 +103,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 
 		
                 Grille_vider(g);
+                reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
                 Grille_remplir_serp(g, serp, &sens, M);
                 Grille_redessiner(g);	
