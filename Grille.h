@@ -9,8 +9,8 @@ struct Grille {
 	int n;			/* Nombre de lignes dans la grille */
  	int m;			/* Nombre de colonnes dans la grille */
 	char *** tab;		/* Tableau à trois dimensions représentant la grille */
-	int cordx;		/* Coordonnée x de la tête du serpent sur la grille */
-	int cordy;		/* Coordonnée y de la tête serpent sur la grille */
+	int cordx;		/* Coordonnée x du fruit sur la grille */
+	int cordy;		/* Coordonnée y du fruit sur la grille */
 };
 
 
@@ -33,7 +33,7 @@ void Grille_desallouer(struct Grille ** g);				/* Désalloue la mémoire occupé
 
 void Grille_redessiner(struct Grille *g);				/* Redessine la grille */
 
-void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);			/* Remplit une cellule de la grille avec une couleur spécifique */
+void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);		/* Remplit une cellule de la grille avec une couleur spécifique */
 
 int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element **M);		/* Remplit la grille avec les éléments du serpent */
 
