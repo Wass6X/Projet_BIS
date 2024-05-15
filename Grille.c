@@ -134,6 +134,39 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 }
 
 
+
+
+
+/* Fonction pour initialiser une matrice d'éléments */
+enum element **initialiser_mat(int n, int m){
+        enum element **M = malloc(n * sizeof(enum element *));
+
+        int i,j;
+
+        for(i=0; i<=n; i++){
+                M[i] = malloc(m * sizeof(enum element));
+                for (j = 0; j < m; j++) {
+                        M[i][j] = Rien;
+                }
+        }
+	return M;
+}
+
+
+
+/* Fonction pour réinitialiser une matrice d'éléments */
+void reset_mat(enum element  **M, int n, int m) {
+    	int i,j;
+
+	for (i=0; i<n; i++) {
+        	for (j=0; j<m; j++) {
+            		M[i][j] = Rien;
+        	}
+    	}
+}
+
+
+
 /* Fonction pour remplir la grille avec les éléments du serpent */	
 void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element **M) {
         
@@ -153,8 +186,17 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element 
 					c = c->suivant;
 					
 	        	}
-
-			Grille_remplir_couleur(g, x, y, s->couleur);
+	        	
+	        	/*Grille_remplir_couleur(g, x, y, s->couleur);*/
+	        	
+			/* Vérifier la colliision avec lui-meme*/
+			if(M[y][x] == Corps_serp) {
+				printf("Coliision détecté! Le jeu est terminé.\n");
+				exit(EXIT_FAILURE);
+			else{
+				M[y][x] = Corp_serp;
+				Grille_remplir_couleur(g, x, y, s->couleur);
+	        	}
 	        	
 	        	switch (c->sens) {
                               

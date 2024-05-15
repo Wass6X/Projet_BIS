@@ -32,7 +32,8 @@ int main(int argc, char **  argv) {
 	serp = creer_serpent(g->n, g->m);
 
 	delai = atoi(argv[3]);
-
+	
+	enum element **M = initaliser_mat(g->n, g->m);
 
 	Jouer_Serpent(g, serp, delai);
 
