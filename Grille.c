@@ -136,6 +136,13 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>40 && couleur<48 && x>=0 && x<g->m && y>=0 && y<g->n)
 		sprintf(g->tab[y][x], "\033[%dm++", couleur);
+<<<<<<< Updated upstream
+=======
+
+	}else if (x >= 0 && x<g->m && y >= 0 &&y<g->n){
+
+		sprintf(g->tab[y][x], "\033[%d41m<>", couleur);
+>>>>>>> Stashed changes
 	
 
 }
