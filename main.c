@@ -52,7 +52,7 @@ int main(int argc, char **  argv) {
 	if(atoi(argv[4])==2){
 		serp1 = creer_serpent(g->n, g->m);
 		serp2 = creer_serpent_2(g->n, g->m);
-		Jouer_Serpent_2(g, serp, delai, M);
+		Jouer_Serpent_2(g, serp1, serp2, delai, M);
 	}
 
 	/* Désallocation de la mémoire allouée pour la grille */
