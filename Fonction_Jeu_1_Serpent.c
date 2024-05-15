@@ -30,7 +30,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 
 
         /* initialisation de la grille */
-        Grille_tirage_fruit(g);
+        Grille_tirage_fruit(g, M);
         Grille_vider(g);
         reset_mat(M, g->n, g->m);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
@@ -105,7 +105,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                     
                     	ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
                     	
-                        Grille_tirage_fruit(g);
+                        Grille_tirage_fruit(g, M);
 
 			score++;	
                 

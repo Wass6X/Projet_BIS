@@ -23,7 +23,7 @@ struct Grille * Grille_allouer(int n, int m);				/* Alloue une nouvelle grille *
 
 void Grille_vider(struct Grille * g);					/* Vide la grille */
 
-void Grille_tirage_fruit(struct Grille * g);				/* Place un fruit aléatoirement sur la grille */
+void Grille_tirage_fruit(struct Grille * g, enum element **M);				/* Place un fruit aléatoirement sur la grille */
 
 
 /* Fontion permerttant d'afficher la Grille */

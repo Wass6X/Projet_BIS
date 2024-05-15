@@ -51,12 +51,14 @@ void Grille_vider(struct Grille * g) {
 
 
 /* Fonction pour placer un fruit aléatoirement sur la grille */
-void Grille_tirage_fruit(struct Grille *g){
+void Grille_tirage_fruit(struct Grille *g, enum element **M){
        
 	srand(time(NULL));
 
-	g->cordx = rand() % g->m;
-        g->cordy = rand() % g->n;
+	do {
+		g->cordx = rand() % g->m;
+        	g->cordy = rand() % g->n;
+	} while(M[g->cordy][g->cordx] == Corp_serp);
 	
 }
 
@@ -133,11 +135,11 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
 	if (couleur>40 && couleur<48 && x >= 0 && x<g->m && y >= 0 &&y<g->n){
 
-		snprintf(g->tab[y][x], 8, "\033[%dm++", couleur);
+		sprintf(g->tab[y][x], "\033[%dm++", couleur);
 
 	}else if (x >= 0 && x<g->m && y >= 0 &&y<g->n){
 
-		snprintf(g->tab[y][x], 8, "\033[41m<>", couleur);
+		sprintf(g->tab[y][x], "\033[%dm<>", couleur);
 	
 	}
 
