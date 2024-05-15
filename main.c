@@ -44,7 +44,7 @@ int main(int argc, char **  argv) {
 
 	/* Lancement du jeu avec un serpent */
 	if(atoi(argv[4])==1){
-		serp1 = creer_serpent(g->n, g->m);
+		serp = creer_serpent(g->n, g->m);
 		Jouer_Serpent(g, serp, delai, M);
 	}
 
