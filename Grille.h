@@ -25,7 +25,8 @@ void Grille_vider(struct Grille * g);					/* Vide la grille */
 
 void Grille_tirage_fruit(struct Grille * g);				/* Place un fruit aléatoirement sur la grille */
 
-/* Fontion permerttant d'afficher le fruit */
+
+/* Fontion permerttant d'afficher la Grille */
 void Grille_remplir_rouge(struct Grille * g, int x, int y);		/* Remplit une cellule de la grille en rouge (Le fruit) */
 
 void Grille_desallouer(struct Grille ** g);				/* Désalloue la mémoire occupée par une grille */

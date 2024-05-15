@@ -189,7 +189,6 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
 					
 	        	}
 	        	
-	        	/*Grille_remplir_couleur(g, x, y, s->couleur);*/
 	        	
 			/* Vérifier la colliision avec lui-meme*/
 			if(M[y][x] == Corp_serp) {
@@ -216,15 +215,15 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
 				case DROITE:
 					x--;
 					break;
-					
+				default:
+					break;	
 			}
-			
-
 		
 		}
-
+		
 		s = s->suivant;
 	
 	}
+	
 	return 0;
 }

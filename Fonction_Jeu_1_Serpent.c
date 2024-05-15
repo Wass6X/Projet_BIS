@@ -9,16 +9,18 @@
 #include"liste_Mouvement.h"
 
 
+/* Fonction principale pour jouer au serpent */
 void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum element **M){
 
-        int ch;
+        int ch;                         /* Variable pour stocker la touche pressée par l'utilisateur */
 
-	int score=0;
+	int score=0;                    /* Variable pour stocker le score */
 	
-        int couleur, longueur;  
+        int couleur, longueur;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent */
 	
-	int touche;
+	int touche;                     /* Variable pour détecter si le serpent entre en collision avec lui-même ou le bord de la grille */
 	
+      
         /* Initialisation de ncurses et du clavier */
         initscr();
         raw();
@@ -41,10 +43,10 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
         
         refresh();
          
+        /* Boucle principale du jeu */ 
         while ((ch = getch()) != '#') {
                 
-                
-                
+                /* Gestion des déplacements du serpent en fonction des touches pressées */
                 switch (ch) {
                     case KEY_UP:
 			if (serp->mouvement->premier->sens != BAS) 
@@ -71,6 +73,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                         break;
                 }
 		
+                /* Mise à jour de la position du serpent en fonction de son dernier mouvement */
 		switch (serp->mouvement->premier->sens) {
                     	case HAUT:
 				serp->cordy--;
@@ -84,6 +87,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                     	case GAUCHE:
 				serp->cordx--;
                        		break;
+                        default:
+                                break;
 		}
                 
                 /* Vérifier la collision avec le bord */
@@ -94,6 +99,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 /* Vérifier la collision avec le fruit */
                 if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
                 	
+                        /* Ajout d'une nouvelle section au serpent */
 			longueur = (rand() % 2) + 1;
 			couleur = (rand() % 6) + 41;
                     
@@ -104,7 +110,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 			score++;	
                 }
                 
-		
+		/* Mise à jour de la grille */
                 Grille_vider(g);
 		reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
@@ -125,9 +131,16 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
         /* Terminer la session ncurses */
         endwin(); 
         
-        printf("Game over\n");
-        
-	printf("Votre score final est de: %d", score);
+        Grille_vider(g);
+	reset_mat(M, g->n, g->m);
+        Grille_remplir_rouge(g, g->cordx, g->cordy);  
+        touche = Grille_remplir_serp(g, serp, M);
+        Grille_redessiner(g);	
+               
+
+        /* Affichage du message de fin */
+        printf("\033[0m Game over\n");
+        printf("\033[0m Votre score final est de: %d", score);
 
 }
 

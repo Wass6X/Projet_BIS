@@ -4,15 +4,15 @@
 #include "liste_Section.h"
 #include "liste_Mouvement.h"
 
-
+/* Définition de la structure Serpent */
 struct Serpent {
 	
-	int cordx;
-	int cordy;
+	int cordx;			/* Coordonnée x du serpent */
+	int cordy;			/* Coordonnée y du serpent */
 	
-	struct Liste * chaine;	
+	struct Liste * chaine;		/* Liste de sections formant le serpent */
 	
-	struct Liste_Mouvement * mouvement;
+	struct Liste_Mouvement * mouvement;		/* Liste des mouvements du serpent */
 	
 };
 
