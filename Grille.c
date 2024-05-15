@@ -163,7 +163,7 @@ void reset_mat(enum element  **M, int n, int m) {
 
 
 /* Fonction pour remplir la grille avec les éléments du serpent */	
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens, enum element **M) {
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens, enum element **M){
         
         int i, x=serp->cordx, y=serp->cordy;
         int change = 0;
