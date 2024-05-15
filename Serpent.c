@@ -13,7 +13,8 @@ struct Serpent * creer_serpent(int n, int m) {
 	ajout_debut_liste(serp->chaine, creer_section(1, 41));
 	
 	serp->mouvement = creer_liste_mouvement();
-    
+	ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, NEUTRE));  
+
 	return serp;
 }
 

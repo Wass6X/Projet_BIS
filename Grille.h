@@ -29,16 +29,6 @@ void Grille_redessiner(struct Grille *g);				/* Redessine la grille */
 
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);			/* Remplit une cellule de la grille avec une couleur spécifique */
 
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens, enum element **M);		/* Remplit la grille avec les éléments du serpent */
-
-
-/* Enumération des différents éléments présents dans la matrice d'éléments */
-enum element {Rien, Fruit, Corp_serp};
-
-/* Initialisation d'une matrice d'éléments */
-enum element **initialiser_mat(int n, int m);
-
-/* Réinitialisation d'une matrice d'éléments */
-void reset_mat(enum element  **M, int n, int m);
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp);		/* Remplit la grille avec les éléments du serpent */
 
 #endif

@@ -9,13 +9,11 @@
 #include"liste_Mouvement.h"
 
 
-void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum element **M){
+void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai){
 
         int ch;
 
 	int score=0;
-	
-	enum Direction sens=NEUTRE;
 	
         int couleur, longueur;  
 	
@@ -30,9 +28,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
         /* initialisation de la grille */
         Grille_tirage_fruit(g);
         Grille_vider(g);
-        reset_mat(M, g->n, g->m);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
-        Grille_remplir_serp(g, serp, &sens, M);  
+        Grille_remplir_serp(g, serp);  
         Grille_redessiner(g);
         
     	printf("\nVotre score: %d\n", score);
@@ -41,34 +38,35 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
          
         while ((ch = getch()) != '#') {
                 
+                
+                
                 switch (ch) {
                     case KEY_UP:
-			if (sens != BAS) {
-				ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, HAUT));  
-				sens = HAUT;
-			}
+			if (serp->mouvement->premier->sens != BAS) 
+				ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, HAUT));  
+			
                         break;
+                        
                     case KEY_DOWN:
-                        if (sens != HAUT) {
-                        	ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, BAS));     
-                       		sens = BAS;                   
-                        }
+                        if (serp->mouvement->premier->sens != HAUT) 
+                        	ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, BAS)); 
+                        
                         break;
+                        
                     case KEY_LEFT:
-             		if (sens != DROITE) {
-             		        ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, GAUCHE));           
-                        	sens = GAUCHE;             
-                        }
+             		if (serp->mouvement->premier->sens != DROITE) 
+             		        ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, GAUCHE));           
+                        
                         break;
+                        
                     case KEY_RIGHT:
-			if (sens != GAUCHE) {
-                        	ajout_fin_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, DROITE));                        
-                    		sens = DROITE;    
-                        }
+			if (serp->mouvement->premier->sens != GAUCHE) 
+                        	ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, DROITE));                        
+                        
                         break;
                 }
 		
-		switch (sens) {
+		switch (serp->mouvement->premier->sens) {
                     	case HAUT:
 				serp->cordy--;
                         	break;
@@ -103,9 +101,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 
 		
                 Grille_vider(g);
-                reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-                Grille_remplir_serp(g, serp, &sens, M);
+                Grille_remplir_serp(g, serp);
                 Grille_redessiner(g);	
                
     		printf("\nVotre score: %d\n", score);

@@ -134,39 +134,10 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 }
 
 
-/* Fonction pour initialiser une matrice d'éléments */
-enum element **initialiser_mat(int n, int m){
-        enum element **M = malloc(n * sizeof(enum element *));
-
-        int i,j;
-
-        for(i=0; i<=n; i++){
-                M[i] = malloc(m * sizeof(enum element));
-                for (j = 0; j < m; j++) {
-                        M[i][j] = Rien;
-                }
-        }
-	return M;
-}
-
-
-/* Fonction pour réinitialiser une matrice d'éléments */
-void reset_mat(enum element  **M, int n, int m) {
-    	int i,j;
-
-	for (i=0; i<n; i++) {
-        	for (j=0; j<m; j++) {
-            		M[i][j] = Rien;
-        	}
-    	}
-}
-
-
 /* Fonction pour remplir la grille avec les éléments du serpent */	
-void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Direction * sens, enum element **M){
+void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element **M) {
         
         int i, x=serp->cordx, y=serp->cordy;
-        int change = 0;
        
        	struct Section * s = serp->chaine->premier;
        	struct Case * c = serp->mouvement->premier;
@@ -177,26 +148,15 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
         while (s != NULL) {
 		for (i = 0; i < s->taille; i++) {	
 	        	
-	        	if (c!=NULL && x==c->cordx && y==c->cordy && (!change)) {
-	        		*sens = c->sens;
-	        		c = c->suivant;
-	        		change = 1;
+	        	if (c->suivant!=NULL) {
+	        		if (c->cordx==x && c->cordy==y)
+					c = c->suivant;
+					
 	        	}
 
-	        	/* Grille_remplir_couleur(g, x, y, s->couleur); */
-
-			/* Vérifier la collision avec lui-même */
-			if (M[y][x] == Corp_serp) {
-                		printf("Collision détectée! Le jeu est terminé.\n");
-                		exit(EXIT_FAILURE);
-            		}else{
-                		M[y][x] = Corp_serp; 
-               			Grille_remplir_couleur(g, x, y, s->couleur);
-           		}
-			
-			
-
-	        	switch (*sens) {
+			Grille_remplir_couleur(g, x, y, s->couleur);
+	        	
+	        	switch (c->sens) {
                               
 				case HAUT:
 					y++;
@@ -215,6 +175,7 @@ void Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum Directio
 					break;
 					
 			}
+			
 
 		
 		}
