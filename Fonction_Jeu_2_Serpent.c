@@ -18,12 +18,9 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 	
         int couleur, longueur;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent */
 	
-	int touche1, touche2;                 
+	int touche1=0, touche2=0;                 
 	
-<<<<<<< Updated upstream
-        int perd = 0;
-=======
->>>>>>> Stashed changes
+	int perd = 0;
       
         /* Initialisation de ncurses et du clavier */
         initscr();
@@ -49,49 +46,30 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
         refresh();
          
         /* Boucle principale du jeu */ 
-<<<<<<< Updated upstream
         while ((ch = getch()) != '#' && perd == 0) {
-=======
-        while ((ch = getch()) != '#') {
->>>>>>> Stashed changes
+
                 
                 /* Gestion des déplacements du serpent en fonction des touches pressées */
                 switch (ch) {
                     case KEY_UP:
-<<<<<<< Updated upstream
-			if (serp1->mouvement->premier->sens != BAS) 
-				ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, HAUT));  
-=======
-			if (serp->mouvement->premier->sens != BAS) 
-				ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, HAUT));  
->>>>>>> Stashed changes
+	²		    if (serp1->mouvement->premier->sens != BAS) 
+					ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, HAUT));  
 			
-                        break;
+                        	break;
                         
                     case KEY_DOWN:
-<<<<<<< Updated upstream
                         if (serp1->mouvement->premier->sens != HAUT) 
                         	ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, BAS)); 
-=======
-                        if (serp->mouvement->premier->sens != HAUT) 
-                        	ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, BAS)); 
->>>>>>> Stashed changes
+
                         
                         break;
                         
                     case KEY_LEFT:
-<<<<<<< Updated upstream
-             		if (serp1->mouvement->premier->sens != DROITE) 
+			    if (serp1->mouvement->premier->sens != DROITE) 
              		        ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, GAUCHE));           
-=======
-             		if (serp->mouvement->premier->sens != DROITE) 
-             		        ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, GAUCHE));           
->>>>>>> Stashed changes
-                        
                         break;
                         
                     case KEY_RIGHT:
-<<<<<<< Updated upstream
 			if (serp1->mouvement->premier->sens != GAUCHE) 
                         	ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, DROITE));                        
                         
@@ -118,16 +96,11 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                     case 'd':
 			if (serp2->mouvement->premier->sens != GAUCHE) 
                         	ajout_debut_liste_mouvement(serp2->mouvement, creer_case(serp2->cordx, serp2->cordy, DROITE));                        
-=======
-			if (serp->mouvement->premier->sens != GAUCHE) 
-                        	ajout_debut_liste_mouvement(serp->mouvement, creer_case(serp->cordx, serp->cordy, DROITE));                        
->>>>>>> Stashed changes
                         
                         break;
                 }
 		
                 /* Mise à jour de la position du serpent en fonction de son dernier mouvement */
-<<<<<<< Updated upstream
 		switch (serp1->mouvement->premier->sens) {
                     	case HAUT:
 				serp1->cordy--;
@@ -158,51 +131,26 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                         	break;
                     	case GAUCHE:
 				serp2->cordx--;
-=======
-		switch (serp->mouvement->premier->sens) {
-                    	case HAUT:
-				serp->cordy--;
-                        	break;
-                        case BAS:
-				serp->cordy++;
-                        	break;
-                    	case DROITE:
-				serp->cordx++;
-                        	break;
-                    	case GAUCHE:
-				serp->cordx--;
->>>>>>> Stashed changes
-                       		break;
-                        default:
-                                break;
+				break;
 		}
-                
+
                 /* Vérifier la collision avec le bord */
-<<<<<<< Updated upstream
-                if (serp1->cordx < 0 || serp1->cordx >= g->m || serp1->cordy < 0 || serp1->cordy >= g->n) {
+
+		if (serp1->cordx < 0 || serp1->cordx >= g->m || serp1->cordy < 0 || serp1->cordy >= g->n) {
                     perd = 1;  
                 }
 
                 if (serp2->cordx < 0 || serp2->cordx >= g->m || serp2->cordy < 0 || serp2->cordy >= g->n) {
                     perd = 2;  
                 }
-
+		
                 /* Vérifier la collision avec le fruit */
                 if (serp1->cordx == g->cordx && serp1->cordy == g->cordy) {
-=======
-                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) {
-                    break;  
-                }
-
-                /* Vérifier la collision avec le fruit */
-                if (serp->cordx == g->cordx && serp->cordy == g->cordy) {
->>>>>>> Stashed changes
                 	
                         /* Ajout d'une nouvelle section au serpent */
 			longueur = (rand() % 2) + 1;
 			couleur = (rand() % 6) + 41;
                     
-<<<<<<< Updated upstream
                     	ajout_fin_liste(serp1->chaine, creer_section(longueur, couleur));
                     	
                         Grille_tirage_fruit(g, M);
@@ -223,13 +171,12 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                         Grille_tirage_fruit(g, M);
 
 			score2++;	
-=======
-                    	ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
+
+			ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
                     	
                         Grille_tirage_fruit(g, M);
 
 			score++;	
->>>>>>> Stashed changes
                 
                 }
                 
@@ -237,7 +184,6 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                 Grille_vider(g);
 		reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-<<<<<<< Updated upstream
                 touche1 = Grille_remplir_serp(g, serp1, M);
                 touche2 = Grille_remplir_serp(g, serp2, M);
 
@@ -247,50 +193,31 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 
                 if(touche2 == 1){
                 	perd = 2;	
-=======
-                touche = Grille_remplir_serp(g, serp, M);
-                
-                if(touche == 1){
-                	break;	
->>>>>>> Stashed changes
-                }
-                
+		}
+		
                 Grille_redessiner(g);	
                
-<<<<<<< Updated upstream
-    		printf("\033[0m score joueur 1: %d \033[1E\033[0m\n", score1);
-=======
-    		printf("\033[0m Votre score: %d \033[1E\033[0m\n", score);
->>>>>>> Stashed changes
-                
+		printf("\033[0m score joueur 1: %d \033[1E\033[0m\n", score1);
+
+		printf("\033[0m score joueur 2: %d \033[1E\033[0m\n", score2);
+
+
                 refresh();
         }
 
 
         /* Terminer la session ncurses */
-        endwin(); 
-<<<<<<< Updated upstream
-        	
+        endwin();         	
                
         /* Affichage du message de fin */
         printf("\033[0m Game over\n");
         if(perd==1){
-                printf("\033[0m Victoire du joueur 2\n");
+                printf(" Victoire du joueur 2\n");
         }else if(perd==2){
-                printf("\033[0m Victoire du joueur 1\n");
+                printf(" Victoire du joueur 1\n");
         }
-=======
         
-        Grille_vider(g);
-	reset_mat(M, g->n, g->m);
-        Grille_remplir_rouge(g, g->cordx, g->cordy);  
-        touche = Grille_remplir_serp(g, serp, M);
-        Grille_redessiner(g);	
-               
+        printf(" Score final joueur 1 est de: %d", score1);
 
-        /* Affichage du message de fin */
-        printf("\033[0m Game over\n");
-        printf("\033[0m Votre score final est de: %d", score);
-
->>>>>>> Stashed changes
+	printf(" Score final joueur 2 est de: %d", score2);
 }
