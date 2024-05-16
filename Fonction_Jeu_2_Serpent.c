@@ -38,8 +38,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
         Grille_vider(g);
         reset_mat(M, g->n, g->m);
         Grille_remplir_rouge(g, g->cordx, g->cordy); 
-        Grille_remplir_serp(g, serp1, M);
-        Grille_remplir_serp(g, serp2, M);  
+        Grille_remplir_serp_2(g, serp1, serp2, M);  
         Grille_redessiner(g);
         
     	printf("Score Joueur 1: %d - Score Joueur 2: %d\n", score1, score2);
@@ -80,7 +79,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 
                     case 'w':
 			if (serp2->mouvement->premier->sens != BAS) 
-				ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp2->cordx, serp2->cordy, HAUT));  
+				ajout_debut_liste_mouvement(serp2->mouvement, creer_case(serp2->cordx, serp2->cordy, HAUT));  
 			
                         break;
                         
@@ -96,7 +95,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                         
                         break;
                         
-                    case 'd':
+                    case 'd' :
 			if (serp2->mouvement->premier->sens != GAUCHE) 
                         	ajout_debut_liste_mouvement(serp2->mouvement, creer_case(serp2->cordx, serp2->cordy, DROITE));                        
                         
@@ -117,6 +116,8 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                     	case GAUCHE:
 				serp1->cordx--;
                        		break;
+                        default:
+                                break;
                 }
 
                 /* Mise à jour de la position du serpent2 en fonction de son dernier mouvement */
@@ -133,6 +134,8 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                     	case GAUCHE:
 				serp2->cordx--;
 				break;
+                        default:
+                                break;
 		}
 
                 /* Vérifier la collision avec le bord */

@@ -66,7 +66,7 @@ void Grille_tirage_fruit(struct Grille *g, enum element **M){
 
 /* Fonction pour remplir une cellule de la grille en rouge */
 void Grille_remplir_rouge(struct Grille * g, int x, int y) {
-	strcpy(g->tab[y][x], "\033[101m");	
+	strcpy(g->tab[y][x], "\033[101m00");	
 }
 
 
