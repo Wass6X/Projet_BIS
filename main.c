@@ -60,7 +60,7 @@ int main(int argc, char **  argv) {
 
 
 	/* Affichage d'un message de fin */
-	printf("\n\n Au revoir !\n\n");
+	printf("\n\n\033[0m Au revoir !\n\n");
 
 
 	/* Sortie du programme avec succès */

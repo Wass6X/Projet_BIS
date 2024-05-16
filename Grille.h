@@ -37,7 +37,7 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur);		/* R
 
 int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element **M);		/* Remplit la grille avec les éléments du serpent */
 
-int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp, enum element **M);		/* Remplit la grille avec les éléments des deux serpent */
+int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp1, struct Serpent * serp2, enum element **M);		/* Remplit la grille avec les éléments des deux serpent */
 
 /* Initialisation d'une matrice d'éléments */
 enum element **initialiser_mat(int n, int m);

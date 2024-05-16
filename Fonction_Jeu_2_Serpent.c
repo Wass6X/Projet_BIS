@@ -16,12 +16,15 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 
 	int score1=0, score2=0;         /* Variable pour stocker les score */
 	
-        int couleur, longueur;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent */
+        int couleur1, longueur1;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent1 */
+
+        int couleur2, longueur2;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent2 */
 	
-	int touche1=0, touche2=0;                 
+	int touche=0;                 
 	
-	int perd = 0;
+	int perd=0;
       
+       
         /* Initialisation de ncurses et du clavier */
         initscr();
         raw();
@@ -52,7 +55,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                 /* Gestion des déplacements du serpent en fonction des touches pressées */
                 switch (ch) {
                     case KEY_UP:
-	²		    if (serp1->mouvement->premier->sens != BAS) 
+			if (serp1->mouvement->premier->sens != BAS) 
 					ajout_debut_liste_mouvement(serp1->mouvement, creer_case(serp1->cordx, serp1->cordy, HAUT));  
 			
                         	break;
@@ -100,7 +103,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                         break;
                 }
 		
-                /* Mise à jour de la position du serpent en fonction de son dernier mouvement */
+                /* Mise à jour de la position du serpent1 en fonction de son dernier mouvement */
 		switch (serp1->mouvement->premier->sens) {
                     	case HAUT:
 				serp1->cordy--;
@@ -114,11 +117,9 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                     	case GAUCHE:
 				serp1->cordx--;
                        		break;
-                        default:
-                                break;
-		}
+                }
 
-                /* Mise à jour de la position du serpent en fonction de son dernier mouvement */
+                /* Mise à jour de la position du serpent2 en fonction de son dernier mouvement */
 		switch (serp2->mouvement->premier->sens) {
                     	case HAUT:
 				serp2->cordy--;
@@ -135,8 +136,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 		}
 
                 /* Vérifier la collision avec le bord */
-
-		if (serp1->cordx < 0 || serp1->cordx >= g->m || serp1->cordy < 0 || serp1->cordy >= g->n) {
+                if (serp1->cordx < 0 || serp1->cordx >= g->m || serp1->cordy < 0 || serp1->cordy >= g->n) {
                     perd = 1;  
                 }
 
@@ -144,14 +144,14 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                     perd = 2;  
                 }
 		
-                /* Vérifier la collision avec le fruit */
+                /* Vérifier la collision du serpent1 avec le fruit */
                 if (serp1->cordx == g->cordx && serp1->cordy == g->cordy) {
                 	
                         /* Ajout d'une nouvelle section au serpent */
-			longueur = (rand() % 2) + 1;
-			couleur = (rand() % 6) + 41;
+			longueur1 = (rand() % 2) + 1;
+			couleur1 = (rand() % 6) + 41;
                     
-                    	ajout_fin_liste(serp1->chaine, creer_section(longueur, couleur));
+                    	ajout_fin_liste(serp1->chaine, creer_section(longueur1, couleur1));
                     	
                         Grille_tirage_fruit(g, M);
 
@@ -159,24 +159,18 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                 
                 }
 
-                /* Vérifier la collision avec le fruit */
+                /* Vérifier la collision du serpent2 avec le fruit */
                 if (serp2->cordx == g->cordx && serp2->cordy == g->cordy) {
                 	
                         /* Ajout d'une nouvelle section au serpent */
-			longueur = (rand() % 2) + 1;
-			couleur = (rand() % 6) + 41;
+			longueur2 = (rand() % 2) + 1;
+			couleur2 = (rand() % 6) + 41;
                     
-                    	ajout_fin_liste(serp2->chaine, creer_section(longueur, couleur));
+                    	ajout_fin_liste(serp2->chaine, creer_section(longueur2, couleur2));
                     	
                         Grille_tirage_fruit(g, M);
 
 			score2++;	
-
-			ajout_fin_liste(serp->chaine, creer_section(longueur, couleur));
-                    	
-                        Grille_tirage_fruit(g, M);
-
-			score++;	
                 
                 }
                 
@@ -184,14 +178,13 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                 Grille_vider(g);
 		reset_mat(M, g->n, g->m);
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
-                touche1 = Grille_remplir_serp(g, serp1, M);
-                touche2 = Grille_remplir_serp(g, serp2, M);
+                touche = Grille_remplir_serp_2(g, serp1, serp2, M);
 
-                if(touche1 == 1){
+                if(touche == 1){
                 	perd = 1;	
                 }
 
-                if(touche2 == 1){
+                if(touche == 1){
                 	perd = 2;	
 		}
 		
@@ -203,6 +196,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 
 
                 refresh();
+        
         }
 
 
@@ -211,13 +205,18 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
                
         /* Affichage du message de fin */
         printf("\033[0m Game over\n");
+        
         if(perd==1){
-                printf(" Victoire du joueur 2\n");
+
+                printf("\033[0m Victoire du joueur 2\n");
+        
         }else if(perd==2){
-                printf(" Victoire du joueur 1\n");
+
+                printf("\033[0m Victoire du joueur 1\n");
+        
         }
         
-        printf(" Score final joueur 1 est de: %d", score1);
+        printf("\033[0m Score final joueur 1 est de: %d", score1);
 
-	printf(" Score final joueur 2 est de: %d", score2);
+	printf("\033[0m Score final joueur 2 est de: %d", score2);
 }

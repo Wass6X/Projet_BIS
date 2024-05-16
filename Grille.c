@@ -66,7 +66,7 @@ void Grille_tirage_fruit(struct Grille *g, enum element **M){
 
 /* Fonction pour remplir une cellule de la grille en rouge */
 void Grille_remplir_rouge(struct Grille * g, int x, int y) {
-	strcpy(g->tab[y][x], "\033[101m  ");	
+	strcpy(g->tab[y][x], "\033[101m");	
 }
 
 
@@ -134,17 +134,18 @@ void Grille_redessiner(struct Grille *g){
 /* Fonction pour remplir une cellule de la grille avec une couleur spécifique */
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
-	if (couleur>40 && couleur<48 && x>=0 && x<g->m && y>=0 && y<g->n)
-		sprintf(g->tab[y][x], "\033[%dm++", couleur);
-<<<<<<< Updated upstream
-=======
+	if (couleur>40 && couleur<48 && x>=0 && x<g->m && y>=0 && y<g->n){
+		
+		sprintf(g->tab[y][x], "\033[%dm++", couleur);			/* Affichage du corp du serpent */
 
 	}else if (x >= 0 && x<g->m && y >= 0 &&y<g->n){
-
-		sprintf(g->tab[y][x], "\033[%d41m<>", couleur);
->>>>>>> Stashed changes
+		if(couleur == 0){
+			sprintf(g->tab[y][x], "\033[%d41m<>", couleur);		/* Affichage de la tête du serpent1 */
+		}else{
+			sprintf(g->tab[y][x], "\033[%d43m<>", couleur);		/* Affichage de la tête du serpent2 */
+		}
+	}
 	
-
 }
 
 
@@ -244,15 +245,20 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
 	return 0;
 }
 
+
 /* Fonction pour remplir la grille avec les éléments des deux serpent */	
-int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp, enum element **M) {
+int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp1, struct Serpent * serp2, enum element **M) {
         
-        int i, x=serp->cordx, y=serp->cordy;
+        int i, x=serp1->cordx, y=serp1->cordy;
+	int x2=serp2->cordx, y2=serp2->cordy;
        
-       	struct Section * s = serp->chaine->premier;
-       	struct Case * c = serp->mouvement->premier;
+       	struct Section * s = serp1->chaine->premier;
+       	struct Case * c = serp1->mouvement->premier;
+
+	struct Section * s2 = serp2->chaine->premier;
+       	struct Case * c2 = serp2->mouvement->premier;
        
-        if (g == NULL || serp == NULL || est_vide(serp->chaine))
+        if (g == NULL || serp1 == NULL || est_vide(serp1->chaine) || serp1 == NULL || est_vide(serp1->chaine))
                 return 0;
         
         while (s != NULL) {
@@ -272,8 +278,8 @@ int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp, enum element
 			}else{
 				M[y][x] = Corp_serp;
 				
-				if (y==serp->cordy && x==serp->cordx)
-					sprintf(g->tab[serp->cordy][serp->cordx], "\033[41m<>");
+				if (y==serp1->cordy && x==serp1->cordx)
+					sprintf(g->tab[serp1->cordy][serp1->cordx], "\033[41m<>");
 				
 				else
 					Grille_remplir_couleur(g, x, y, s->couleur);
@@ -307,5 +313,59 @@ int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp, enum element
 	
 	}
 
+	while (s2 != NULL) {
+		for (i = 0; i < s2->taille; i++) {	
+	        	
+	        	
+			if (c2->suivant!=NULL) {
+	        		if (c2->cordx==x && c2->cordy==y)
+					c2 = c2->suivant;
+					
+	        	}
+	        	
+	        	
+			/* Vérifier la colliision avec lui-meme*/
+			if(M[y2][x2] == Corp_serp) {
+				return 2;
+			}else{
+				M[y2][x2] = Corp_serp;
+				
+				if (y==serp2->cordy && x==serp2->cordx)
+					sprintf(g->tab[serp2->cordy][serp2->cordx], "\033[41m<>");
+				
+				else
+					Grille_remplir_couleur(g, x2, y2, s2->couleur);
+			}
+			
+	        	
+	        	switch (c2->sens) {
+                              
+				case HAUT:
+					y2++;
+					break;
+                                
+				case BAS:
+					y2--;
+					break;
+				
+				case GAUCHE:
+					x2++;
+					break;
+				
+				case DROITE:
+					x2--;
+					break;
+				default:
+					break;	
+			}
+		
+		}
+		
+		s2 = s2->suivant;
+	
+	}
+
+
 	return 0;
+
 }
