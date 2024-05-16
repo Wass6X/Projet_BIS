@@ -59,7 +59,7 @@ void Grille_tirage_fruit(struct Grille *g, enum element **M){
 		g->cordx = rand() % g->m;
         	g->cordy = rand() % g->n;
         	
-	} while(M[g->cordy][g->cordx] == Corp_serp);
+	}while(M[g->cordy][g->cordx] == Corp_serp);
 	
 }
 
