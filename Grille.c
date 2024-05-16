@@ -138,15 +138,8 @@ void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 		
 		sprintf(g->tab[y][x], "\033[%dm++", couleur);			/* Affichage du corp du serpent */
 
-	}else if (x >= 0 && x<g->m && y >= 0 &&y<g->n){
-		if(couleur == 0){
-			sprintf(g->tab[y][x], "\033[%d41m<>", couleur);		/* Affichage de la tête du serpent1 */
-		}
-		if(couleur == 1){
-			sprintf(g->tab[y][x], "\033[%d43m<>", couleur);		/* Affichage de la tête du serpent2 */
-		}
 	}
-	
+
 }
 
 
@@ -331,7 +324,7 @@ int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp1, struct Serp
 			}else{
 				M[y2][x2] = Corp_serp;
 				
-				if (y==serp2->cordy && x==serp2->cordx)
+				if (y2==serp2->cordy && x2==serp2->cordx)
 					sprintf(g->tab[serp2->cordy][serp2->cordx], "\033[43m<>");
 				
 				else
