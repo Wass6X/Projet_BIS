@@ -331,7 +331,7 @@ int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp1, struct Serp
 				M[y2][x2] = Corp_serp;
 				
 				if (y==serp2->cordy && x==serp2->cordx)
-					sprintf(g->tab[serp2->cordy][serp2->cordx], "\033[41m<>");
+					sprintf(g->tab[serp2->cordy][serp2->cordx], "\033[43m<>");
 				
 				else
 					Grille_remplir_couleur(g, x2, y2, s2->couleur);
