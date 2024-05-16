@@ -92,9 +92,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 		}
                 
                 /* Vérifier la collision avec le bord */
-                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n) {
+                if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n)
                     break;  
-                }
+                
 
                 /* Vérifier la collision avec le fruit */
                 if (serp->cordx == g->cordx && serp->cordy == g->cordy) {

@@ -58,6 +58,7 @@ void Grille_tirage_fruit(struct Grille *g, enum element **M){
 	do {
 		g->cordx = rand() % g->m;
         	g->cordy = rand() % g->n;
+        	
 	} while(M[g->cordy][g->cordx] == Corp_serp);
 	
 }
@@ -133,15 +134,9 @@ void Grille_redessiner(struct Grille *g){
 /* Fonction pour remplir une cellule de la grille avec une couleur spécifique */
 void Grille_remplir_couleur(struct Grille * g, int x, int y, int couleur) {
 	
-	if (couleur>40 && couleur<48 && x >= 0 && x<g->m && y >= 0 &&y<g->n){
-
+	if (couleur>40 && couleur<48 && x>=0 && x<g->m && y>=0 && y<g->n)
 		sprintf(g->tab[y][x], "\033[%dm++", couleur);
-
-	}else if (x >= 0 && x<g->m && y >= 0 &&y<g->n){
-
-		sprintf(g->tab[y][x], "\033[%dm<>", couleur);
 	
-	}
 
 }
 
@@ -186,7 +181,7 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
        
         if (g == NULL || serp == NULL || est_vide(serp->chaine))
                 return 0;
-	
+        
         while (s != NULL) {
 		for (i = 0; i < s->taille; i++) {	
 	        	
@@ -203,7 +198,12 @@ int Grille_remplir_serp(struct Grille * g, struct Serpent * serp, enum element *
 				return 1;
 			}else{
 				M[y][x] = Corp_serp;
-				Grille_remplir_couleur(g, x, y, s->couleur);
+				
+				if (y==serp->cordy && x==serp->cordx)
+					sprintf(g->tab[serp->cordy][serp->cordx], "\033[41m<>");
+				
+				else
+					Grille_remplir_couleur(g, x, y, s->couleur);
 			}
 			
 	        	
