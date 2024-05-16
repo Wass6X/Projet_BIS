@@ -18,7 +18,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 	
         int couleur, longueur;          /* Variables pour la couleur et la longueur d'une nouvelle section du serpent */
 	
-	int touche;                     /* Variable pour détecter si le serpent entre en collision avec lui-même ou le bord de la grille */
+	int touche=0;                     /* Variable pour détecter si le serpent entre en collision avec lui-même ou le bord de la grille */
 	
       
         /* Initialisation de ncurses et du clavier */
@@ -93,7 +93,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 
                 /* Vérifier la collision avec le bord */
                 if (serp->cordx < 0 || serp->cordx >= g->m || serp->cordy < 0 || serp->cordy >= g->n)
-                    break;  
+                	break;
                 
 
                 /* Vérifier la collision avec le fruit */
@@ -117,9 +117,9 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 Grille_remplir_rouge(g, g->cordx, g->cordy);  
                 touche = Grille_remplir_serp(g, serp, M);
                 
-                if(touche == 1){
+                if (touche)
                 	break;	
-                }
+                
                 
                 Grille_redessiner(g);	
                
@@ -130,13 +130,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 
 
         /* Terminer la session ncurses */
-        endwin(); 
-        
-        Grille_vider(g);
-	reset_mat(M, g->n, g->m);
-        Grille_remplir_rouge(g, g->cordx, g->cordy);  
-        touche = Grille_remplir_serp(g, serp, M);
-        Grille_redessiner(g);	
+        endwin();
                
 
         /* Affichage du message de fin */
