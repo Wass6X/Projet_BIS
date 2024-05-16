@@ -319,7 +319,7 @@ int Grille_remplir_serp_2(struct Grille * g, struct Serpent * serp1, struct Serp
 	        	
 	        	
 			if (c2->suivant!=NULL) {
-	        		if (c2->cordx==x && c2->cordy==y)
+	        		if (c2->cordx==x2 && c2->cordy==y2)
 					c2 = c2->suivant;
 					
 	        	}
