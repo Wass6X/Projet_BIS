@@ -207,7 +207,7 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
         endwin();         	
                
         /* Affichage du message de fin */
-        printf("\033[0m Game over\n");
+        printf("\033[0m\n Game over\n");
         
         if(perd==1){
 

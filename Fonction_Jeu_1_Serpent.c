@@ -134,7 +134,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                
 
         /* Affichage du message de fin */
-        printf("\033[0m Game over\n");
+        printf("\033[0m\n Game over\n");
         printf("\033[0m Votre score final est de: %d", score);
 
 }
