@@ -13,4 +13,4 @@ Le jeu se lance avec la commande ./exec sur le terminal suivi des dimensions de 
 de secondes (de preferences 2 ou 3) puis du nombre de joueurs ( 1 ou 2 ) 
 
 Utilisation de GitHub : Nous avons utilisé GitHub pour partager les tâches et coordonner notre travail. Chacun d'entre nous a travaillé 
-sur différentes parties du code, puis nous avons fusionné nos contributions à chaque fin d'exercice, et on a traviller ensemble sur certaines fonctions.
+sur différentes parties du code, puis nous avons fusionné nos contributions à chaque fin d'exercice, et on a travillé ensemble sur certaines fonctions.
