@@ -22,7 +22,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
 	
       
         /* Initialisation de ncurses et du clavier */
-        initscr();
+	initscr();
         raw();
         keypad(stdscr, TRUE);
         noecho();
