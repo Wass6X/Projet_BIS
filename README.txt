@@ -1,16 +1,75 @@
-Travail en binôme pour Le Mini-projet du module “Programmation 2” en langage C
-Fait par : Ghedamsi Youcef, Beldjoudi Wissameddine ( Groupe 03 L1 informatique )
+Mini-Projet : Jeu "Snake" en Langage C
 
-Description du code :
-Le code est une implémentation du jeu classique "Snake" en langage C. Il utilise des fonctions pour allouer une grille, créer un serpent, 
-gérer les mouvements du serpent, placer des fruits aléatoires sur la grille, et redessiner la grille sur l'écran. 
+Module : Programmation 2
 
-Fonctionnement :
-Le jeu démarre avec un serpent et une grille vide. Le joueur peut contrôler le serpent à l'aide des touches directionnelles pour le faire 
-se déplacer dans la grille. L'objectif est de faire manger au serpent des fruits placés aléatoirement sur la grille, ce qui fait grandir 
-le serpent et augmente le score. Le jeu se termine lorsque le serpent entre en collision avec lui-même ou avec les bords de la grille.
-Le jeu se lance avec la commande ./exec sur le terminal suivi des dimensions de la grille, de la vitesse de réactualisation en dixiement 
-de secondes (de preferences 2 ou 3) puis du nombre de joueurs ( 1 ou 2 ) 
+Travail en binômeRéalisé par :
 
-Utilisation de GitHub : Nous avons utilisé GitHub pour partager les tâches et coordonner notre travail. Chacun d'entre nous a travaillé 
-sur différentes parties du code, puis nous avons fusionné nos contributions à chaque fin d'exercice, et on a travillé ensemble sur certaines fonctions.
+Ghedamsi Youcef
+
+Beldjoudi Wissameddine(Groupe 03 - L1 Informatique)
+
+Description du Projet
+
+Ce projet consiste en une implémentation du jeu classique "Snake" en langage C.
+
+Le programme utilise des fonctions pour :
+
+Allouer dynamiquement une grille,
+
+Créer et initialiser un serpent,
+
+Gérer les déplacements du serpent,
+
+Placer des fruits de manière aléatoire sur la grille,
+
+Redessiner dynamiquement la grille sur l'écran pour refléter l'état du jeu.
+
+Fonctionnement
+
+Le jeu se lance à partir d'un terminal avec la commande suivante :
+
+./exec <largeur> <hauteur> <vitesse> <nombre_de_joueurs>
+
+Paramètres :
+
+<largeur> et <hauteur> : dimensions de la grille (en cases).
+
+<vitesse> : vitesse de rafraîchissement du jeu en dixièmes de seconde (préférablement 2 ou 3).
+
+<nombre_de_joueurs> : 1 ou 2 joueurs.
+
+Règles :
+
+Le jeu commence avec un serpent sur une grille vide.
+
+Le joueur contrôle le serpent à l'aide des touches directionnelles pour le déplacer dans la grille.
+
+L'objectif est de manger les fruits placés aléatoirement sur la grille. Chaque fruit mangé :
+
+Fait grandir le serpent.
+
+Augmente le score.
+
+Le jeu se termine si :
+
+Le serpent entre en collision avec lui-même,
+
+Ou s'il touche les bords de la grille.
+
+Utilisation de GitHub
+
+Nous avons utilisé GitHub pour organiser notre travail en binôme :
+
+Répartition des tâches :
+
+Chaque membre a travaillé sur différentes parties du code.
+
+Fusion des contributions :
+
+Nous avons fusionné nos modifications après chaque étape majeure.
+
+Collaboration directe :
+
+Nous avons travaillé ensemble sur certaines fonctions spécifiques pour garantir leur bon fonctionnement.
+
+Si vous avez des suggestions ou souhaitez rapporter un bug, n'hésitez pas à ouvrir une issue sur notre dépôt GitHub.
