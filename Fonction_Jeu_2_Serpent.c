@@ -140,11 +140,13 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
 
                 /* Vérifier la collision avec le bord */
                 if (serp1->cordx < 0 || serp1->cordx >= g->m || serp1->cordy < 0 || serp1->cordy >= g->n) {
-                    perd = 1;  
+			perd = 1;  
+			break;
                 }
 
                 if (serp2->cordx < 0 || serp2->cordx >= g->m || serp2->cordy < 0 || serp2->cordy >= g->n) {
-                    perd = 2;  
+                	perd = 2;  
+			break;
                 }
 		
                 /* Vérifier la collision du serpent1 avec le fruit */
