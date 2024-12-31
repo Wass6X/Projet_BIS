@@ -4,3 +4,6 @@
 # Ignorer les exécutables
 exec
 *.out
+
+# Ignorer les fichiers compressés
+*.zip
