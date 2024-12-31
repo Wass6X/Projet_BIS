@@ -1,0 +1,6 @@
+# Ignorer les fichiers objets
+*.o
+
+# Ignorer les exécutables
+exec
+*.out
