@@ -3,7 +3,7 @@ Fait par : Ghedamsi Youcef, Beldjoudi Wissameddine ( Groupe 03 L1 informatique )
 
 Description du code :
 Le code est une implémentation du jeu classique "Snake" en langage C. Il utilise des fonctions pour allouer une grille, créer un serpent, 
-gérer les mouvements du serpent, placer des fruits aléatoires sur la grille, et redessiner la grille à l'écran. 
+gérer les mouvements du serpent, placer des fruits aléatoires sur la grille, et redessiner la grille sur l'écran. 
 
 Fonctionnement :
 Le jeu démarre avec un serpent et une grille vide. Le joueur peut contrôler le serpent à l'aide des touches directionnelles pour le faire 
