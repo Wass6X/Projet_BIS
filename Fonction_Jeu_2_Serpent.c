@@ -179,15 +179,15 @@ void Jouer_Serpent_2(struct Grille *g, struct Serpent *serp1, struct Serpent *se
         endwin();         
 
         /* Affichage du message de fin */
-        printf("\033[0m\n Game over\n");
+        printf("\033[0m\n Game over\n\n");
         
         if (perd == 1) {
-                printf("\033[0m Victoire du joueur 2\n");
+                printf("\033[0m Victoire du joueur 2\n\n");
         } else if (perd == 2) {
-                printf("\033[0m Victoire du joueur 1\n");
+                printf("\033[0m Victoire du joueur 1\n\n");
         }
         
-        printf("\033[0m Score final joueur 1 est de: %d", score1);
-        printf("\033[0m Score final joueur 2 est de: %d", score2);
+        printf("\033[0m Score final joueur 1 est de: %d \n", score1);
+        printf("\033[0m Score final joueur 2 est de: %d \n", score2);
 }
 

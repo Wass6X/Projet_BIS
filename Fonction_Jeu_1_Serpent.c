@@ -123,7 +123,7 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                 
                 Grille_redessiner(g);	
                
-    		printf("\033[0m Votre score: %d \033[1E\033[0m\n", score);
+    		printf("\033[0m Votre score: %d \033[1E\033[0m\n\n", score);
                 
                 refresh();
         }
@@ -134,8 +134,8 @@ void Jouer_Serpent(struct Grille *g, struct Serpent *serp, int delai, enum eleme
                
 
         /* Affichage du message de fin */
-        printf("\033[0m\n Game over\n");
-        printf("\033[0m Votre score final est de: %d", score);
+        printf("\033[0m\n Game over\n\n");
+        printf("\033[0m Votre score final est de: %d \n", score);
 
 }
 
